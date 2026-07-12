@@ -8,7 +8,8 @@ body {
 }
 
 body {
-  font-family: 'LemonBrushArabic', serif;
+  font-family: 'KFGQPC Uthman Taha Naskh Regular', serif;
+  color: #333333;
   text-align: right;
 }
 
@@ -22,16 +23,16 @@ body {
 }
 
 @font-face {
-  font-family: 'LemonBrushArabic';
-  src: url('../font-awesome/fonts/LemonBrushArabicPersonalUseOnly-Regular.otf') format('opentype');
+  font-family: 'KFGQPC Uthman Taha Naskh Regular';
+  src: url('../font-awesome/fonts/KFGQPC Uthman Taha Naskh Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'LemonBrushTexture';
-  src: url('../font-awesome/fonts/LemonBrushPersonalUseOnly-Texture.otf') format('opentype');
-  font-weight: normal;
+  font-family: 'KFGQPC Uthman Taha Naskh Bold';
+  src: url('../font-awesome/fonts/KFGQPC Uthman Taha Naskh Bold.ttf') format('truetype');
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -55,13 +56,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'LemonBrushTexture', cursive;
+  font-family: 'KFGQPC Uthman Taha Naskh Bold', serif;
+  font-weight: bold;
 }
 
 .btn,
 .sidebar-nav li a,
 .sidebar-nav > .sidebar-brand a {
-  font-family: 'LemonBrushTexture', cursive;
+  font-family: 'KFGQPC Uthman Taha Naskh Regular', serif;
   letter-spacing: 0.5px;
 }
 
@@ -70,7 +72,7 @@ h6 {
 #sidebar-wrapper {
   right: -250px;
   width: 250px;
-  background: var(--ink);
+  background: var(--gold);
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -100,15 +102,15 @@ h6 {
 }
 
 .sidebar-nav li a {
-  color: var(--gold);
+  color: #333333;
   display: block;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .sidebar-nav li a:hover {
-  color: var(--ink);
-  background: var(--gold);
+  color: var(--white);
+  background: var(--teal);
   text-decoration: none;
 }
 
@@ -124,11 +126,11 @@ h6 {
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: var(--sky);
+  color: #333333;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
-  color: var(--ink);
+  color: var(--white);
   background: none;
 }
 
