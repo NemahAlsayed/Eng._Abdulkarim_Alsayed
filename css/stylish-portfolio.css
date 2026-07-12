@@ -4,6 +4,26 @@ html,
 body {
   height: 100%;
   width: 100%;
+  direction: rtl;
+}
+
+body {
+  font-family: 'LemonBrushArabic', serif;
+  text-align: right;
+}
+
+@font-face {
+  font-family: 'LemonBrushArabic';
+  src: url('../font-awesome/fonts/LemonBrushArabicPersonalUseOnly-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'LemonBrushTexture';
+  src: url('../font-awesome/fonts/LemonBrushPersonalUseOnly-Texture.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .vert-text {
@@ -19,11 +39,27 @@ body {
   font-weight: 700;
 }
 
+.hero-arabic-title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'LemonBrushTexture', cursive;
+}
+
+.btn,
+.sidebar-nav li a,
+.sidebar-nav > .sidebar-brand a {
+  font-family: 'LemonBrushTexture', cursive;
+  letter-spacing: 0.5px;
+}
+
 /* Side Menu */
 
 #sidebar-wrapper {
-  margin-right: -250px;
-  right: 0;
+  right: -250px;
   width: 250px;
   background: #000;
   position: fixed;
@@ -44,11 +80,14 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  right: 0;
 }
 
 .sidebar-nav li {
   line-height: 40px;
-  text-indent: 20px;
+  padding-right: 20px;
+  text-indent: 0;
+  text-align: right;
 }
 
 .sidebar-nav li a {
@@ -91,13 +130,16 @@ body {
 }
 
 #sidebar-wrapper.active {
-  right: 250px;
-  width: 250px;
+  right: 0;
   -webkit-transition: all 0.4s ease 0s;
   -moz-transition: all 0.4s ease 0s;
   -ms-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav > a.toggle {
+  float: left;
 }
 
 .toggle {
@@ -111,11 +153,38 @@ body {
   height: 100%;
   width: 100%;
   position: relative;
-  background: url('../img/bg.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  overflow: hidden;
+  background: #000;
+}
+
+.header:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(240, 240, 240, 0.22);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.header-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.header .vert-text {
+  position: relative;
+  z-index: 2;
 }
 
 /* Intro */
@@ -221,10 +290,6 @@ i.scroll:hover {
 
 @media (max-width: 768px) {
 	
-  .header {
-	background: url('../img/bg.jpg') no-repeat center center scroll; 
-  }
-
   .callout {
 	background: url(../img/callout.jpg) no-repeat center center scroll; 
   }

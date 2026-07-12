@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>من أنا - منصة المستشار الهندسي عبد الكريم السيد</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/stylish-portfolio.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
+        <li class="sidebar-brand"><a href="index.html">منصة المستشار</a></li>
+        <li><a href="index.html#about">نبذة</a></li>
+        <li><a href="about-me.html">عنّي</a></li>
+        <li><a href="index.html#services">الخدمات</a></li>
+        <li><a href="index.html#portfolio">معرض الأعمال</a></li>
+        <li><a href="index.html#contact">تواصل معي</a></li>
+      </ul>
+    </div>
+
+    <div class="container" style="padding: 90px 0 60px;">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <h1 class="hero-arabic-title">من أنا</h1>
+          <p class="lead">هذه الصفحة مخصصة للتعريف بالمستشار المهندس عبد الكريم السيد وخبراته وخدماته.</p>
+          <p class="lead">يمكنك العودة إلى الصفحة الرئيسية أو استكشاف باقي أقسام المنصة من القائمة الجانبية.</p>
+          <a href="index.html" class="btn btn-default btn-lg">العودة للرئيسية</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script>
+        $("#menu-close").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+    </script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+    </script>
+    <script>
+      $(function() {
+        $("#sidebar-wrapper a[href]").not("#menu-close").click(function() {
+          $("#sidebar-wrapper").removeClass("active");
+        });
+      });
+    </script>
+  </body>
+</html>
