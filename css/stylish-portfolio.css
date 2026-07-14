@@ -225,6 +225,10 @@ h6 {
   color: var(--gold);
 }
 
+.header .vert-text h3 {
+  color: #5c6668;
+}
+
 .intro h2,
 .services h4,
 .portfolio h4,
