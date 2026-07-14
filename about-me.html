@@ -1,64 +1,516 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>من أنا · المستشار عبد الكريم السيد</title>
+  <!-- Bootstrap 5 + RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font (Cairo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Cairo', 'Segoe UI', sans-serif;
+    }
+    body {
+      background: #f5f3f0;
+      color: #1e2b2c;
+    }
+    /* color palette */
+    :root {
+      --primary-dark: #163235;
+      --primary-teal: #106967;
+      --accent-green: #4fbc9c;
+      --accent-blue: #32bfda;
+      --accent-gold: #efca7c;
+    }
 
-    <title>من أنا - منصة المستشار الهندسي عبد الكريم السيد</title>
+    /* fancy gradient overlay & glassmorphism */
+    .hero-about {
+      background: linear-gradient(145deg, var(--primary-dark) 0%, #1d4a47 100%);
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 3rem 3rem;
+      padding: 3rem 1rem 4rem;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+    }
+    .hero-about::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(79,188,156,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-about::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(50,191,218,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      letter-spacing: -0.5px;
+    }
+    .hero-title .highlight {
+      color: var(--accent-gold);
+      border-bottom: 4px solid var(--accent-green);
+      padding-bottom: 4px;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.3rem;
+      font-weight: 300;
+      background: rgba(22,50,53,0.45);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid rgba(239,202,124,0.25);
+    }
+    .badge-soft {
+      background: rgba(79,188,156,0.18);
+      color: #fff;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 400;
+      backdrop-filter: blur(2px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .section-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      border-radius: 2.5rem;
+      padding: 2rem 2.2rem;
+      box-shadow: 0 15px 35px -10px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.5);
+      transition: all 0.25s ease;
+      height: 100%;
+    }
+    .section-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 45px -12px rgba(16,105,103,0.25);
+      border-color: var(--accent-green);
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      position: relative;
+      margin-bottom: 1.8rem;
+    }
+    .section-title i {
+      color: var(--accent-gold);
+      margin-left: 0.6rem;
+      font-size: 2rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+      border-radius: 8px;
+    }
+    .list-experience li {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed rgba(22,50,53,0.07);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+    }
+    .list-experience li i {
+      color: var(--primary-teal);
+      font-size: 1.1rem;
+      margin-top: 0.2rem;
+      min-width: 1.4rem;
+    }
+    .pill-tag {
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 0.2rem 1.1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      display: inline-block;
+      margin: 0.2rem 0.1rem;
+      border: 1px solid rgba(239,202,124,0.2);
+    }
+    .pill-tag.gold {
+      background: var(--accent-gold);
+      color: #1e2b2c;
+      border-color: #dbb35c;
+    }
+    .pill-tag.teal {
+      background: var(--primary-teal);
+      color: #fff;
+    }
+    .pill-tag.blue {
+      background: var(--accent-blue);
+      color: #0a1f20;
+    }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      color: #3b5758;
+      font-weight: 400;
+    }
+    .timeline-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      margin-left: 10px;
+      box-shadow: 0 0 0 3px rgba(79,188,156,0.2);
+    }
+    .company-name {
+      font-weight: 700;
+      color: var(--primary-teal);
+    }
+    .gold-icon {
+      color: var(--accent-gold);
+    }
+    .btn-outline-custom {
+      border: 2px solid var(--primary-teal);
+      color: var(--primary-teal);
+      border-radius: 60px;
+      padding: 0.5rem 2rem;
+      font-weight: 600;
+      transition: 0.2s;
+      background: transparent;
+    }
+    .btn-outline-custom:hover {
+      background: var(--primary-teal);
+      color: #fff;
+      border-color: var(--primary-teal);
+      box-shadow: 0 8px 18px rgba(16,105,103,0.25);
+    }
+    .btn-solid-custom {
+      background: var(--accent-gold);
+      border: 2px solid var(--accent-gold);
+      color: #1e2b2c;
+      border-radius: 60px;
+      padding: 0.5rem 2rem;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+    .btn-solid-custom:hover {
+      background: #e2b85c;
+      border-color: #d4a84a;
+      color: #0f1f1e;
+      box-shadow: 0 8px 18px rgba(239,202,124,0.4);
+    }
+    .profile-img-placeholder {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, var(--primary-teal), var(--accent-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: #fff;
+      box-shadow: 0 12px 28px -6px rgba(16,105,103,0.35);
+      border: 4px solid rgba(255,255,255,0.6);
+      margin: 0 auto 1rem;
+    }
+    .contact-item {
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(4px);
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.7);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin: 0.2rem;
+    }
+    .contact-item i {
+      color: var(--primary-teal);
+      font-size: 1.2rem;
+    }
+    .footer-note {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.7);
+      border-radius: 3rem 3rem 0 0;
+      padding: 1.8rem;
+    }
+    /* responsive */
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.3rem; }
+      .section-card { padding: 1.5rem; }
+      .stat-number { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
 
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  </head>
-
-  <body>
-
-    <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fa fa-bars"></i></a>
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand"><a href="index.html">منصة المستشار</a></li>
-        <li><a href="index.html#about">نبذة</a></li>
-        <li><a href="about-me.html">عنّي</a></li>
-        <li><a href="index.html#services">الخدمات</a></li>
-        <li><a href="index.html#portfolio">معرض الأعمال</a></li>
-        <li><a href="index.html#contact">تواصل معي</a></li>
-      </ul>
+  <!-- HERO / header -->
+  <section class="hero-about text-center text-white">
+    <div class="container position-relative">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <!-- avatar / placeholder -->
+          <div class="profile-img-placeholder mx-auto">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h1 class="hero-title mb-2">
+            <span class="highlight">عبد الكريم السيد</span>
+          </h1>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+            <span class="badge-soft"><i class="fas fa-graduation-cap me-1"></i> هندسة مدنية · جامعة اللاذقية ١٩٨٤</span>
+            <span class="badge-soft"><i class="fas fa-book-open me-1"></i> كلية الشريعة · جامعة دمشق ١٩٨٩</span>
+          </div>
+          <p class="hero-sub mb-4">
+            <i class="fas fa-hard-hat me-2"></i> مستشار هندسي · مدير مشاريع ضخمة · خبير إنشاءات
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+            <span class="pill-tag gold"><i class="fas fa-calendar-alt me-1"></i> +٣٩ عاماً من الخبرة</span>
+            <span class="pill-tag teal"><i class="fas fa-globe-asia me-1"></i> السعودية · تركيا · سوريا</span>
+            <span class="pill-tag blue"><i class="fas fa-solar-panel me-1"></i> الطاقة المتجددة</span>
+          </div>
+          <div class="mt-3">
+            <a href="#biography" class="btn btn-outline-custom text-white border-white me-2 mb-2" style="border-color:rgba(255,255,255,0.5); color:white;">
+              <i class="fas fa-chevron-down"></i> سيرتي
+            </a>
+            <a href="#contact" class="btn btn-solid-custom mb-2">
+              <i class="fas fa-paper-plane"></i> تواصل
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="container" style="padding: 90px 0 60px;">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2 text-center">
-          <h1 class="hero-arabic-title">من أنا</h1>
-          <p class="lead">هذه الصفحة مخصصة للتعريف بالمستشار المهندس عبد الكريم السيد وخبراته وخدماته.</p>
-          <p class="lead">يمكنك العودة إلى الصفحة الرئيسية أو استكشاف باقي أقسام المنصة من القائمة الجانبية.</p>
-          <a href="index.html" class="btn btn-default btn-lg">العودة للرئيسية</a>
+  <div class="container py-5">
+    <!-- BIO + quick stats -->
+    <div class="row g-4 mb-5" id="biography">
+      <div class="col-lg-7">
+        <div class="section-card">
+          <div class="section-title">
+            <i class="fas fa-user-astronaut"></i> نبذة
+          </div>
+          <p class="lead" style="font-weight: 400; color: #1d3d3b;">
+            مهندس مدني بخبرة تمتد لأكثر من <strong>٣٩ عاماً</strong> في إدارة المشاريع الإنشائية والسياحية والصناعية في السعودية وتركيا وسوريا.
+          </p>
+          <p style="color: #2d4f4d; font-size: 1.05rem; line-height: 1.8;">
+            قاد تنفيذ مشاريع كبرى في قطاعات المستشفيات، الفنادق، المراكز التجارية، المجمعات السكنية، والطاقة المتجددة. 
+            يمتلك خبرة واسعة في <strong>دراسات الجدوى، إدارة العقود، الإشراف الهندسي، الطاقة الشمسية، التصميم الداخلي، وتطوير المشاريع الاستثمارية</strong>.
+            يتميز بقدرته على قيادة فرق متعددة التخصصات، وإدارة المشاريع من الفكرة إلى التشغيل، وتحقيق أعلى معايير الجودة والسلامة.
+          </p>
+          <div class="mt-3 d-flex flex-wrap gap-3">
+            <div><span class="stat-number">٣٩+</span> <span class="stat-label">سنة خبرة</span></div>
+            <div><span class="stat-number">٢٠+</span> <span class="stat-label">مشروع ضخم</span></div>
+            <div><span class="stat-number">٣</span> <span class="stat-label">دول عمل</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="section-card h-100">
+          <div class="section-title">
+            <i class="fas fa-id-card"></i> معلومات الاتصال
+          </div>
+          <ul class="list-unstyled" style="line-height: 2.1;">
+            <li><i class="fas fa-phone-alt gold-icon me-2"></i> +963 997 643 062</li>
+            <li><i class="fas fa-phone-alt gold-icon me-2"></i> +90 535 073 5148</li>
+            <li><i class="fas fa-envelope gold-icon me-2"></i> abdulkarim@alhayataltaybehen.blog</li>
+            <li><i class="fas fa-envelope gold-icon me-2"></i> alsayedstar@gmail.com</li>
+            <li><i class="fas fa-map-pin gold-icon me-2"></i> تركيا · السعودية · سوريا</li>
+            <li><i class="fab fa-linkedin gold-icon me-2"></i> linkedin.com/in/abdul-karim-alsayed</li>
+          </ul>
+          <div class="mt-2">
+            <span class="pill-tag teal"><i class="fas fa-building"></i> الشركة الهندسية للدراسات</span>
+            <span class="pill-tag blue"><i class="fas fa-chart-line"></i> مكتب دراسات الجدوى</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script>
-        $("#menu-close").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#sidebar-wrapper").toggleClass("active");
-        });
-    </script>
-    <script>
-      $(function() {
-        $("#sidebar-wrapper a[href]").not("#menu-close").click(function() {
-          $("#sidebar-wrapper").removeClass("active");
-        });
-      });
-    </script>
-  </body>
+    <!-- الخبرة المهنية (ملخص) -->
+    <div class="row g-4 mb-5">
+      <div class="col-12">
+        <div class="section-card">
+          <div class="section-title">
+            <i class="fas fa-briefcase"></i> الخبرة المهنية
+          </div>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h5 class="fw-bold"><span class="timeline-dot"></span> ZAC Consulting · جدة</h5>
+              <p class="text-muted small">مقاول عام – مدير مشاريع (2012-2023)</p>
+              <ul class="list-experience list-unstyled">
+                <li><i class="fas fa-check-circle" style="color:var(--accent-green);"></i> مستشفى الملك فيصل التخصصي – توسعات</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-green);"></i> المستشفى السعودي الألماني – تشطيبات طبية</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-green);"></i> موفنبيك جدة – منتجع ساحلي فاخر</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-green);"></i> هيلتون جدة – تجديد شامل</li>
+                <li><i class="fas fa-check-circle" style="color:var(--accent-green);"></i> كورال مول & الصيرفي مول – مراكز تجارية</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h5 class="fw-bold"><span class="timeline-dot"></span> شركة المحيط · إسطنبول</h5>
+              <p class="text-muted small">مؤسس ومدير عام (2011-2024)</p>
+              <ul class="list-experience list-unstyled">
+                <li><i class="fas fa-solar-panel" style="color:var(--accent-gold);"></i> الطاقة الشمسية للمباني السكنية والتجارية</li>
+                <li><i class="fas fa-palette" style="color:var(--accent-gold);"></i> ديكور داخلي لفنادق 4 و 5 نجوم</li>
+                <li><i class="fas fa-leaf" style="color:var(--accent-gold);"></i> استشارات البناء الأخضر</li>
+                <li><i class="fas fa-water" style="color:var(--accent-gold);"></i> مشاريع إعادة الإعمار والتطوير العمراني</li>
+              </ul>
+              <h5 class="fw-bold mt-3"><span class="timeline-dot"></span> Molteni & C · مجموعة الخوجة</h5>
+              <p class="text-muted small">مدير مشاريع (1988-2005) · مكة، المدينة، جدة</p>
+              <ul class="list-experience list-unstyled">
+                <li><i class="fas fa-hotel" style="color:var(--accent-blue);"></i> فنادق دلة، موفنبيك، شيراتون، هيلتون، أوبروي</li>
+                <li><i class="fas fa-university" style="color:var(--accent-blue);"></i> أبراج المشاعر · وقف الملك عبدالعزيز</li>
+                <li><i class="fas fa-hospital" style="color:var(--accent-blue);"></i> جامعة الملك سعود للعلوم الصحية</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- المبادرات الاستراتيجية + المشاريع -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="section-card h-100">
+          <div class="section-title"><i class="fas fa-rocket"></i> المبادرات الاستراتيجية</div>
+          <h6 class="fw-bold">مبادرة "الحياة الطيبة"</h6>
+          <p>دراسات جدوى مفتوحة المصدر لدعم المجتمعات السورية، تطوير مشاريع استثمارية صغيرة ومتوسطة، وإدارة العلاقات مع المستثمرين.</p>
+          <h6 class="fw-bold mt-3">الخطة الاستراتيجية الشاملة</h6>
+          <p>تحويل محيط المحافظات السورية إلى مناطق صناعية متكاملة بالشراكة مع الحكومة، استثمار المواقع المستردة للملكية العامة.</p>
+          <div class="mt-2">
+            <span class="pill-tag gold">اكتفاء ذاتي 70%</span>
+            <span class="pill-tag teal">100,000 فرصة عمل</span>
+            <span class="pill-tag blue">استثمار 2 مليار $</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="section-card h-100">
+          <div class="section-title"><i class="fas fa-cubes"></i> نماذج المشاريع</div>
+          <ul class="list-experience list-unstyled" style="columns: 1; column-gap: 1.2rem;">
+            <li><i class="fas fa-bolt" style="color:var(--accent-gold);"></i> إنتاج الهيدروجين الأخضر</li>
+            <li><i class="fas fa-mountain" style="color:var(--accent-gold);"></i> استثمار المناجم ومعالجة المعادن</li>
+            <li><i class="fas fa-sun" style="color:var(--accent-gold);"></i> حقول الطاقة الشمسية + الشبكة الحكومية</li>
+            <li><i class="fas fa-seedling" style="color:var(--accent-gold);"></i> الزراعة الكهروضوئية (Agrivoltaics)</li>
+            <li><i class="fas fa-school" style="color:var(--accent-gold);"></i> مدارس عالمية متطورة</li>
+            <li><i class="fas fa-ship" style="color:var(--accent-gold);"></i> ترسانة صيانة سفن · تطوير أرصفة</li>
+            <li><i class="fas fa-bread" style="color:var(--accent-gold);"></i> سلسلة مخابز آلية متكاملة</li>
+            <li><i class="fas fa-hospital" style="color:var(--accent-gold);"></i> مشافي سياحة علاجية في سوريا</li>
+            <li><i class="fas fa-spa" style="color:var(--accent-gold);"></i> منتجعات سياحة إسلامية (شواطئ محافظة)</li>
+            <li><i class="fas fa-industry" style="color:var(--accent-gold);"></i> مصنع ألياف البازلت (السعودية · سوريا)</li>
+            <li><i class="fas fa-city" style="color:var(--accent-gold);"></i> مشروع إعادة إعمار سوريا (استثماري ضخم)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- المهارات و البرامج -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-5">
+        <div class="section-card h-100">
+          <div class="section-title"><i class="fas fa-tools"></i> المهارات التقنية</div>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="pill-tag teal">إدارة المشاريع</span>
+            <span class="pill-tag teal">الهندسة القيمية</span>
+            <span class="pill-tag teal">الإشراف الهندسي</span>
+            <span class="pill-tag teal">إدارة العقود</span>
+            <span class="pill-tag teal">الطاقة الشمسية</span>
+            <span class="pill-tag teal">FF&E</span>
+            <span class="pill-tag teal">التصميم الداخلي</span>
+            <span class="pill-tag teal">تطوير البنية التحتية</span>
+            <span class="pill-tag teal">دراسات الجدوى</span>
+            <span class="pill-tag teal">التمويل الإسلامي</span>
+          </div>
+          <div class="mt-4">
+            <div class="section-title" style="font-size:1.2rem;"><i class="fas fa-laptop-code"></i> البرامج</div>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="pill-tag blue">Primavera P3/P6</span>
+              <span class="pill-tag blue">Microsoft Project</span>
+              <span class="pill-tag blue">AutoCAD</span>
+              <span class="pill-tag blue">Revit</span>
+              <span class="pill-tag blue">MS Office</span>
+              <span class="pill-tag blue">Aconex · Procore</span>
+              <span class="pill-tag blue">STATA · SPSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="section-card h-100">
+          <div class="section-title"><i class="fas fa-handshake"></i> الرؤية والتمويل</div>
+          <p><strong>الرؤية:</strong> قيادة النهضة الاقتصادية الشاملة وإعادة الإعمار الاستراتيجي في سوريا عبر مشاريع مستدامة تحقق التنمية الاقتصادية والاجتماعية والبيئية.</p>
+          <p><strong>نماذج التمويل:</strong></p>
+          <ul class="list-experience list-unstyled">
+            <li><i class="fas fa-coins gold-icon"></i> المستثمرون السوريون والمغتربون + الشريك التركي والخليجي</li>
+            <li><i class="fas fa-university gold-icon"></i> صندوق استثمار إقليمي (دول الخليج، الاتحاد الأوروبي)</li>
+            <li><i class="fas fa-mosque gold-icon"></i> تمويل إسلامي: صكوك، مرابحة، وقف، مضاربة</li>
+          </ul>
+          <div class="mt-2">
+            <span class="pill-tag gold">البنك الإسلامي للتنمية</span>
+            <span class="pill-tag gold">صناديق التنمية الخليجية</span>
+            <span class="pill-tag gold">شراكات دولية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- اقتباس ختامي -->
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="p-4 text-center" style="background: rgba(16,105,103,0.05); border-radius: 3rem; border-right: 6px solid var(--accent-gold);">
+          <i class="fas fa-quote-right" style="font-size: 2.4rem; color: var(--accent-gold); opacity: 0.5;"></i>
+          <p class="fs-5 fst-italic" style="color: #1c3d3b;">
+            "إعادة الإعمار ليست مجرد بناء أبنية، بل هي بناء اقتصاد وطنية وخلق مستقبل مستدام للأجيال القادمة."
+          </p>
+          <p class="fw-bold" style="color: var(--primary-dark);">— عبد الكريم السيد</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer / contact -->
+    <div class="footer-note mt-5 text-center" id="contact">
+      <div class="container">
+        <h5 class="text-white mb-3"><i class="fas fa-phone-alt gold-icon me-2"></i> تواصل معي</h5>
+        <div class="d-flex flex-wrap justify-content-center gap-3 mb-2">
+          <span class="contact-item"><i class="fas fa-phone-alt"></i> +963 997 643 062</span>
+          <span class="contact-item"><i class="fas fa-phone-alt"></i> +90 535 073 5148</span>
+          <span class="contact-item"><i class="fas fa-envelope"></i> abdulkarim@alhayataltaybehen.blog</span>
+          <span class="contact-item"><i class="fas fa-envelope"></i> alsayedstar@gmail.com</span>
+        </div>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <span class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/abdul-karim-alsayed</span>
+          <span class="contact-item"><i class="fas fa-map-pin"></i> تركيا · السعودية · سوريا</span>
+        </div>
+        <p class="mt-4 small" style="opacity:0.6;">© 2026 · المستشار عبد الكريم السيد · جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+
+  </div> <!-- container -->
+
+  <!-- Bootstrap JS (optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
