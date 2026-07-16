@@ -9,8 +9,9 @@ body {
 
 body {
   font-family: 'KFGQPC Uthman Taha Naskh Regular', serif;
-  color: #333333;
+  color: #3b3f41;
   text-align: right;
+  background: #f8f5ee;
 }
 
 :root {
@@ -20,6 +21,10 @@ body {
   --sky: #32bfda;
   --gold: #efca7c;
   --white: #ffffff;
+  --text: #3b3f41;
+  --text-soft: #5d6365;
+  --surface: #f8f5ee;
+  --surface-alt: #eef7f6;
 }
 
 @font-face {
@@ -102,7 +107,7 @@ h6 {
 }
 
 .sidebar-nav li a {
-  color: #333333;
+  color: var(--text);
   display: block;
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -126,7 +131,7 @@ h6 {
 }
 
 .sidebar-nav > .sidebar-brand a {
-  color: #333333;
+  color: var(--ink);
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -183,7 +188,7 @@ h6 {
   width: 100%;
   position: relative;
   overflow: hidden;
-  background: var(--ink);
+  background: linear-gradient(135deg, rgba(22, 50, 53, 0.92), rgba(16, 105, 103, 0.82));
 }
 
 .header:before {
@@ -193,7 +198,7 @@ h6 {
   right: 0;
   bottom: 0;
   left: 0;
-  background: linear-gradient(135deg, rgba(16, 105, 103, 0.26), rgba(239, 202, 124, 0.18));
+  background: linear-gradient(135deg, rgba(248, 245, 238, 0.84), rgba(239, 202, 124, 0.22));
   z-index: 1;
   pointer-events: none;
 }
@@ -222,11 +227,15 @@ h6 {
 .services h2,
 .portfolio h2,
 .call-to-action h3 {
-  color: var(--gold);
+  color: var(--text);
+}
+
+.header .vert-text h1 {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .header .vert-text h3 {
-  color: #5c6668;
+  color: var(--text-soft);
 }
 
 .intro h2,
@@ -234,28 +243,29 @@ h6 {
 .portfolio h4,
 .call-to-action .btn,
 footer p {
-  color: var(--ink);
+  color: var(--text);
 }
 
 .services p,
 .portfolio p,
 .call-to-action h3,
 footer {
-  color: var(--white);
+  color: var(--text);
 }
 
 /* Intro */
 
 .intro {
   padding: 50px 0;
+  background: var(--surface);
 }
 
 /* Services */
 
 .services {
-  background: linear-gradient(135deg, var(--teal), var(--sky));
+  background: linear-gradient(135deg, rgba(16, 105, 103, 0.16), rgba(79, 188, 156, 0.1));
   padding: 50px 0;
-  color: var(--white);
+  color: var(--text);
 }
 
 .service-item {
@@ -263,7 +273,7 @@ footer {
 }
 
 i.service-icon {
-  border: 3px solid var(--gold);
+  border: 3px solid var(--teal);
   border-radius: 50%;
   display: inline-block;
   font-size: 56px;
@@ -272,27 +282,56 @@ i.service-icon {
   line-height: 136px;
   vertical-align: middle; 
   text-align: center;
-  color: var(--white);
+  color: var(--ink);
+  background: rgba(239, 202, 124, 0.2);
 }
 
 /* Callout */
 
 .callout {
-  color: var(--white);
+  color: var(--text);
+  position: relative;
   display: table;
   height: 400px;
   width: 100%;
-  background: url(../img/callout.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.callout-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.callout-film {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(248, 245, 238, 0.74);
+  z-index: 1;
+}
+
+.callout-content {
+  position: relative;
+  z-index: 2;
+}
+
+.callout-content h1 {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 /* Portfolio */
 
 .portfolio {
   padding: 50px 0;
+  background: var(--surface-alt);
 }
 
 .portfolio-item {
@@ -307,8 +346,8 @@ i.service-icon {
 /* Call to Action */
 
 .call-to-action {
-  color: var(--white);
-  background: var(--ink);
+  color: var(--text);
+  background: linear-gradient(135deg, rgba(239, 202, 124, 0.35), rgba(50, 191, 218, 0.16));
   padding: 50px 0;
 }
 
@@ -328,14 +367,15 @@ i.service-icon {
 
 .map {
   height: 500px;
+  filter: grayscale(15%) contrast(0.95) saturate(0.85);
 }
 
 /* Footer */
 
 footer {
   padding: 100px 0;
-  background: var(--ink);
-  color: var(--gold);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .top-scroll {
@@ -349,21 +389,21 @@ footer {
 
 footer .list-inline i,
 footer .top-scroll i {
-  color: var(--gold);
+  color: var(--teal);
 }
 
 i.scroll {
-  color: var(--gold);
+  color: var(--teal);
 }
 
 i.scroll:hover {
-  color: var(--sky);
+  color: var(--mint);
 }
 
 .btn-default {
   color: var(--white);
   background-color: var(--teal);
-  border-color: var(--gold);
+  border-color: var(--teal);
 }
 
 .btn-default:hover,
@@ -373,13 +413,13 @@ i.scroll:hover {
 .open .dropdown-toggle.btn-default {
   color: var(--ink);
   background-color: var(--gold);
-  border-color: var(--sky);
+  border-color: var(--gold);
 }
 
 .btn-primary {
   color: var(--ink);
   background-color: var(--gold);
-  border-color: var(--sky);
+  border-color: var(--gold);
 }
 
 .btn-primary:hover,
@@ -389,18 +429,18 @@ i.scroll:hover {
 .open .dropdown-toggle.btn-primary {
   color: var(--white);
   background-color: var(--sky);
-  border-color: var(--mint);
+  border-color: var(--sky);
 }
 
 footer hr {
-  border-top-color: rgba(239, 202, 124, 0.35);
+  border-top-color: rgba(59, 63, 65, 0.18);
 }
 /* Responsive */
 
 @media (max-width: 768px) {
 	
   .callout {
-	background: url(../img/callout.jpg) no-repeat center center scroll; 
+	height: 300px;
   }
 
   .map {
