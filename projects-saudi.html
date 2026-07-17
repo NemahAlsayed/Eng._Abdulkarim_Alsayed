@@ -104,6 +104,20 @@
       background: #dad3c7;
       border-bottom: 2px solid #e3d6c4;
     }
+    .card-img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 2px solid #e3d6c4;
+      overflow: hidden;
+    }
+    .card-img-row .card-img-top {
+      height: 190px;
+      border-bottom: 0;
+    }
+    .card-img-row .card-img-top + .card-img-top {
+      border-right: 1px solid #e3d6c4;
+    }
     .card-body {
       padding: 1.5rem 1.3rem 1.8rem;
       flex: 1;
@@ -161,10 +175,163 @@
       display: inline-block;
       margin-top: 0.4rem;
     }
+    .photo-gallery-wrap {
+      margin-top: 3.5rem;
+      background: linear-gradient(180deg, #f8f5ef 0%, #f1ece3 100%);
+      border: 1px solid #dbcdb8;
+      border-radius: 28px;
+      padding: 1.8rem 1.2rem 1.3rem;
+      box-shadow: 0 14px 24px rgba(24, 66, 61, 0.08);
+    }
+    .photo-gallery-title {
+      text-align: center;
+      margin-bottom: 1.4rem;
+      color: #1f4e4b;
+      font-weight: 800;
+      font-size: 1.45rem;
+    }
+    .photo-slider-layout {
+      direction: ltr;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 118px;
+      gap: 0.9rem;
+      align-items: stretch;
+    }
+    .photo-slider-main {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      min-height: 430px;
+      border: 1px solid #d4c5af;
+      box-shadow: 0 14px 26px rgba(31, 78, 75, 0.2);
+      background: #d9d0c2;
+      touch-action: pan-y;
+    }
+    .photo-slider-main img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .photo-slider-main img.is-changing {
+      opacity: 0.4;
+      transform: scale(1.02);
+    }
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(20, 60, 56, 0.82);
+      color: #fff;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+    .slider-nav:hover {
+      background: rgba(14, 47, 44, 0.94);
+      transform: translateY(-50%) scale(1.06);
+    }
+    .slider-nav.prev {
+      left: 14px;
+    }
+    .slider-nav.next {
+      right: 14px;
+    }
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background: linear-gradient(to top, rgba(8, 36, 35, 0.78), rgba(8, 36, 35, 0));
+      color: #f8f4ec;
+      padding: 1.4rem 1rem 0.8rem;
+      font-size: 0.9rem;
+      direction: rtl;
+    }
+    .photo-slider-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      overflow-y: auto;
+      max-height: 430px;
+      padding-left: 0.2rem;
+      scrollbar-width: thin;
+    }
+    .thumb-btn {
+      border: 2px solid transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #e9e1d4;
+      padding: 0;
+      cursor: pointer;
+      min-height: 72px;
+      box-shadow: 0 7px 16px rgba(28, 73, 68, 0.12);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .thumb-btn img {
+      width: 100%;
+      height: 72px;
+      object-fit: cover;
+      display: block;
+    }
+    .thumb-btn:hover {
+      transform: translateY(-2px);
+      border-color: #c09a68;
+    }
+    .thumb-btn.is-active {
+      border-color: #b68b5c;
+      box-shadow: 0 8px 18px rgba(28, 73, 68, 0.22);
+    }
     /* responsive */
     @media (max-width: 576px) {
       .hero-saudi h1 { font-size: 2rem; }
       .section-title h2 { font-size: 1.5rem; padding: 0.2rem 1.5rem; }
+      .photo-slider-layout {
+        grid-template-columns: 1fr;
+      }
+      .photo-slider-main,
+      .photo-slider-main img {
+        min-height: 250px;
+      }
+      .photo-slider-sidebar {
+        flex-direction: row;
+        max-height: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 0.2rem;
+      }
+      .thumb-btn {
+        min-width: 96px;
+      }
+      .slider-nav {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    @media (min-width: 577px) and (max-width: 991px) {
+      .photo-slider-layout {
+        grid-template-columns: minmax(0, 1fr) 96px;
+      }
+      .photo-slider-main,
+      .photo-slider-main img {
+        min-height: 350px;
+      }
+      .photo-slider-sidebar {
+        max-height: 350px;
+      }
+      .thumb-btn img {
+        height: 64px;
+      }
     }
   </style>
 </head>
@@ -196,7 +363,10 @@
 
     <!-- 1 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3b6b63/ffffff?text=فندق+مكة+هيلتون" class="card-img-top" alt="فندق مكة هيلتون">
+      <div class="card-img-row">
+        <img src="img/Makkeh_Hilton_Towers.jpg" class="card-img-top" alt="فندق مكة هيلتون - صورة 1">
+        <img src="img/Makkeh_Hilton_Towers_1.jpg" class="card-img-top" alt="فندق مكة هيلتون - صورة 2">
+      </div>
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> فندق مكة هيلتون</h5>
         <p>استقبال جديد و توسعة – إشراف كامل على التنفيذ، متابعة الجدولة والجودة بالتعاون مع المقاولين.</p>
@@ -207,7 +377,10 @@
 
     <!-- 2 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/4e7b72/ffffff?text=جدة+هيلتون" class="card-img-top" alt="جدة هيلتون">
+      <div class="card-img-row">
+        <img src="img/Jeddah_Hilton.jpg" class="card-img-top" alt="فندق جدة هيلتون - صورة 1">
+        <img src="img/Jeddah_Hilton_Plan.png" class="card-img-top" alt="فندق جدة هيلتون - صورة 2">
+      </div>
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> جدة هيلتون</h5>
         <p>تطوير شامل، إدارة التكاليف والموارد، ضمان الجودة، ومراقبة الجدول الزمني للمشروع.</p>
@@ -218,8 +391,8 @@
 
     <!-- 3 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3a6b60/ffffff?text=المدينة+هيلتون" class="card-img-top" alt="المدينة هيلتون">
-      <div class="card-body">
+        <img src="img/MadinahHilton.png" class="card-img-top" alt="فندق جدة هيلتون - صورة 1">
+        <div class="card-body">
         <h5><i class="fas fa-hotel"></i> المدينة هيلتون</h5>
         <p>إدارة المشروع، التخطيط، الجدولة، والإشراف على المقاولين، مع تحقيق الجدوى الاقتصادية.</p>
         <span class="badge-cost"><i class="fas fa-coins me-1"></i> 15 مليون ريال</span>
@@ -229,7 +402,7 @@
 
     <!-- 4 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/4f7a6f/ffffff?text=لو+ميريديان+جدة" class="card-img-top" alt="لو ميريديان جدة">
+      <img src="img/leMerdieian.png" class="card-img-top" alt="لو ميريديان جدة">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> لو ميريديان جدة</h5>
         <p>الإشراف على مراحل البناء، التدقيق الكمي، مراقبة التكاليف، وتنسيق أعمال الديكور.</p>
@@ -240,7 +413,7 @@
 
     <!-- 5 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3e6f65/ffffff?text=شيراتون+مكة" class="card-img-top" alt="شيراتون مكة">
+      <img src="img/SheratonMakkah.png" class="card-img-top" alt="شيراتون مكة">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> شيراتون مكة</h5>
         <p>تخطيط وجدولة، إدارة العقود، متابعة التوريدات ومراقبة الجودة وفق أعلى المعايير.</p>
@@ -251,29 +424,18 @@
 
     <!-- 6 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/4f7b70/ffffff?text=تايبة+شيراتون+المدينة" class="card-img-top" alt="تايبة شيراتون">
+      <img src="img/leMerdianTaif.png" class="card-img-top" alt="شيراتون الهدا">
       <div class="card-body">
-        <h5><i class="fas fa-hotel"></i> تايبة شيراتون المدينة</h5>
-        <p>مشروع تطويري، الإشراف على التنفيذ، إدارة التغييرات والتنسيق مع الاستشاريين.</p>
-        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4 ملايين ريال</span>
+        <h5><i class="fas fa-hotel"></i> شيراتون الهدا – الطائف</h5>
+        <p>إدارة المشروع، التخطيط المالي، متابعة الجدولة والإشراف على المقاولين والفنيين.تم تغيير اسمه ليُعرف الآن باسم لو مريديان الهدا.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 3 ملايين ريال</span>
         <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
       </div>
     </div>
 
     <!-- 7 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3c6d63/ffffff?text=شيراتون+الهدا+الطائف" class="card-img-top" alt="شيراتون الهدا">
-      <div class="card-body">
-        <h5><i class="fas fa-hotel"></i> شيراتون الهدا – الطائف</h5>
-        <p>إدارة المشروع، التخطيط المالي، متابعة الجدولة والإشراف على المقاولين والفنيين.</p>
-        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 3 ملايين ريال</span>
-        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
-      </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="project-card">
-      <img src="https://placehold.co/600x400/407168/ffffff?text=السلام+هوليداي+إن+جدة" class="card-img-top" alt="السلام هوليداي إن">
+      <img src="img/HolidayInnJeddah.png" class="card-img-top" alt="السلام هوليداي إن">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> السلام هوليداي إن جدة</h5>
         <p>متابعة التنفيذ، مراقبة الجودة، إدارة المواد والموردين، وإعداد التقارير الدورية.</p>
@@ -282,9 +444,9 @@
       </div>
     </div>
 
-    <!-- 9 -->
+    <!-- 8 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3d6f67/ffffff?text=هوليداي+إن+الرياض" class="card-img-top" alt="هوليداي إن الرياض">
+      <img src="img/OlyaHolidayInn.png" class="card-img-top" alt="هوليداي إن الرياض">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> هوليداي إن العليا – الرياض</h5>
         <p>إدارة المشروع، التخطيط، التحكم في التكاليف، وجدولة الأنشطة بالتعاون مع الفريق.</p>
@@ -293,9 +455,9 @@
       </div>
     </div>
 
-    <!-- 10 -->
+    <!-- 9 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/47756a/ffffff?text=فندق+الشهداء+مكة" class="card-img-top" alt="فندق الشهداء مكة">
+      <img src="img/AlShohdaa.png" class="card-img-top" alt="فندق الشهداء مكة">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> فندق الشهداء – مكة</h5>
         <p>إدارة إنشائية كاملة، مراقبة الجدول الزمني، التنسيق مع المقاولين والموردين.</p>
@@ -304,9 +466,9 @@
       </div>
     </div>
 
-    <!-- 11 -->
+    <!-- 10 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/3b6b63/ffffff?text=قصر+البحر+الأحمر+جدة" class="card-img-top" alt="قصر البحر الأحمر">
+      <img src="img/RedSeaPalace.png" class="card-img-top" alt="قصر البحر الأحمر">
       <div class="card-body">
         <h5><i class="fas fa-archway"></i> قصر البحر الأحمر – جدة</h5>
         <p>إشراف على التشطيبات والديكورات، متابعة الجودة وضبط التكاليف، تنسيق مع المصممين.</p>
@@ -315,47 +477,14 @@
       </div>
     </div>
 
-    <!-- 12 -->
+    <!-- 11 -->
     <div class="project-card">
-      <img src="https://placehold.co/600x400/42736a/ffffff?text=ترايدنت+خميس+مشيط" class="card-img-top" alt="ترايدنت خميس مشيط">
+      <img src="img/tradient.jpeg" class="card-img-top" alt="ترايدنت خميس مشيط">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> ترايدنت – خميس مشيط</h5>
-        <p>التخطيط، إدارة العقود، متابعة التنفيذ، وضبط الجودة بالتعاون مع فريق العمل.</p>
+        <p>التخطيط، إدارة العقود، متابعة التنفيذ، وضبط الجودة بالتعاون مع فريق العمل.يعرف حاليا باسم ميركيور.</p>
         <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4.5 مليون ريال</span>
         <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
-      </div>
-    </div>
-
-    <!-- 13 (extra) -->
-    <div class="project-card">
-      <img src="https://placehold.co/600x400/4a776b/ffffff?text=ترايدنت+مكة" class="card-img-top" alt="ترايدنت مكة">
-      <div class="card-body">
-        <h5><i class="fas fa-hotel"></i> ترايدنت – مكة</h5>
-        <p>تنفيذ وإدارة، مراقبة الكميات، التنسيق مع الاستشاريين، وضمان الالتزام بالجدول.</p>
-        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4.5 مليون ريال</span>
-        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
-      </div>
-    </div>
-
-    <!-- 14 -->
-    <div class="project-card">
-      <img src="https://placehold.co/600x400/3a6a60/ffffff?text=كوربان+المدينة" class="card-img-top" alt="كوربان المدينة">
-      <div class="card-body">
-        <h5><i class="fas fa-hotel"></i> فندق كوربان – المدينة</h5>
-        <p>إدارة المشروع، الإشراف الميداني، التحكم في الميزانية وتنسيق أعمال البناء.</p>
-        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 3 ملايين ريال</span>
-        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
-      </div>
-    </div>
-
-    <!-- 15 -->
-    <div class="project-card">
-      <img src="https://placehold.co/600x400/4c7a6e/ffffff?text=قصر+الرياض+فندق" class="card-img-top" alt="قصر الرياض">
-      <div class="card-body">
-        <h5><i class="fas fa-archway"></i> قصر الرياض فندق</h5>
-        <p>إدارة كاملة، متابعة التشطيبات، التنسيق مع المصممين الداخليين ومراقبة الجودة.</p>
-        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 2.8 مليون ريال</span>
-        <span class="project-tag"><i class="fas fa-tag me-1"></i> قصر / فندق</span>
       </div>
     </div>
 
@@ -376,6 +505,38 @@
     </div>
   </div>
 
+  <section class="photo-gallery-wrap" aria-label="معرض صور المشاريع">
+    <h3 class="photo-gallery-title"><i class="fas fa-images me-2"></i> معرض صور المشاريع</h3>
+    <div class="photo-slider-layout" id="projectPhotoSlider" data-index="0">
+      <div class="photo-slider-main">
+        <button class="slider-nav prev" type="button" aria-label="الصورة السابقة">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <img id="mainProjectPhoto" src="img/Interior_1.jpg" alt="صورة مشروع 1">
+        <button class="slider-nav next" type="button" aria-label="الصورة التالية">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="slider-caption" id="mainProjectPhotoCaption">صورة مشروع 1</div>
+      </div>
+      <div class="photo-slider-sidebar" aria-label="صور مصغرة">
+        <button class="thumb-btn is-active" type="button" data-src="img/Interior_1.jpg" data-alt="صورة مشروع 1" data-caption="صورة مشروع 1"><img src="img/Interior_1.jpg" alt="صورة مصغرة 1"></button>
+        <button class="thumb-btn" type="button" data-src="img/Interior_1_Plan.png" data-alt="خطة مشروع 1" data-caption="خطة مشروع 1"><img src="img/Interior_1_Plan.png" alt="صورة مصغرة 2"></button>
+        <button class="thumb-btn" type="button" data-src="img/Interior_2.jpg" data-alt="صورة مشروع 2" data-caption="صورة مشروع 2"><img src="img/Interior_2.jpg" alt="صورة مصغرة 3"></button>
+        <button class="thumb-btn" type="button" data-src="img/Interior_2_Plan.png" data-alt="خطة مشروع 2" data-caption="خطة مشروع 2"><img src="img/Interior_2_Plan.png" alt="صورة مصغرة 4"></button>
+        <button class="thumb-btn" type="button" data-src="img/Jeddah_Hilton_7th.jpg" data-alt="صورة مشروع 3" data-caption="صورة مشروع 3"><img src="img/Jeddah_Hilton_7th.jpg" alt="صورة مصغرة 5"></button>
+        <button class="thumb-btn" type="button" data-src="img/Jeddah_Hilton_7th_1.png" data-alt="خطة مشروع 3" data-caption="خطة مشروع 3"><img src="img/Jeddah_Hilton_7th_1.png" alt="صورة مصغرة 6"></button>
+        <button class="thumb-btn" type="button" data-src="img/Jeddah_Hilton_Inside.jpg" data-alt="صورة مشروع 4" data-caption="صورة مشروع 4"><img src="img/Jeddah_Hilton_Inside.jpg" alt="صورة مصغرة 7"></button>
+        <button class="thumb-btn" type="button" data-src="img/Jeddah_hilton_inside_plan.png" data-alt="خطة مشروع 4" data-caption="خطة مشروع 4"><img src="img/Jeddah_hilton_inside_plan.png" alt="صورة مصغرة 8"></button>
+        <button class="thumb-btn" type="button" data-src="img/Makkeh_Hotel.jpg" data-alt="صورة مشروع 5" data-caption="صورة مشروع 5"><img src="img/Makkeh_Hotel.jpg" alt="صورة مصغرة 9"></button>
+        <button class="thumb-btn" type="button" data-src="img/Makkeh_Hotel_Plan.png" data-alt="خطة مشروع 5" data-caption="خطة مشروع 5"><img src="img/Makkeh_Hotel_Plan.png" alt="صورة مصغرة 10"></button>
+        <button class="thumb-btn" type="button" data-src="img/Orphanage_center_2005.jpg" data-alt="صورة مشروع 6" data-caption="صورة مشروع 6"><img src="img/Orphanage_center_2005.jpg" alt="صورة مصغرة 11"></button>
+        <button class="thumb-btn" type="button" data-src="img/Private_Villa.jpg" data-alt="صورة مشروع 7" data-caption="صورة مشروع 7"><img src="img/Private_Villa.jpg" alt="صورة مصغرة 12"></button>
+        <button class="thumb-btn" type="button" data-src="img/Wedding Venu.jpg" data-alt="صورة مشروع 8" data-caption="صورة مشروع 8"><img src="img/Wedding Venu.jpg" alt="صورة مصغرة 13"></button>
+        <button class="thumb-btn" type="button" data-src="img/Wedding venu plan.png" data-alt="خطة مشروع 8" data-caption="خطة مشروع 8"><img src="img/Wedding venu plan.png" alt="صورة مصغرة 14"></button>
+      </div>
+    </div>
+  </section>
+
   <div class="footer-note">
     <i class="fas fa-crown me-2" style="color:#b68b5c;"></i> 
     المهندس عبدالكريم السيد – خبرة تمتد لأكثر من 40 عاماً في المشاريع السعودية 
@@ -386,5 +547,140 @@
 
 <!-- Bootstrap JS (optional) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function () {
+    const slider = document.getElementById('projectPhotoSlider');
+    if (!slider) return;
+
+    const mainImage = document.getElementById('mainProjectPhoto');
+    const caption = document.getElementById('mainProjectPhotoCaption');
+    const thumbs = Array.from(slider.querySelectorAll('.thumb-btn'));
+    const prevBtn = slider.querySelector('.slider-nav.prev');
+    const nextBtn = slider.querySelector('.slider-nav.next');
+    const mainStage = slider.querySelector('.photo-slider-main');
+    let currentIndex = 0;
+    const autoPlayDelay = 3800;
+    const swipeThreshold = 45;
+    let autoPlayTimer = null;
+    let isPaused = false;
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+
+    function render(index) {
+      const safeIndex = (index + thumbs.length) % thumbs.length;
+      const active = thumbs[safeIndex];
+      if (!active) return;
+
+      currentIndex = safeIndex;
+      mainImage.classList.add('is-changing');
+      setTimeout(function () {
+        mainImage.src = active.dataset.src;
+        mainImage.alt = active.dataset.alt || 'صورة مشروع';
+        caption.textContent = active.dataset.caption || active.dataset.alt || 'صورة مشروع';
+        mainImage.classList.remove('is-changing');
+      }, 120);
+
+      thumbs.forEach(function (thumb, thumbIndex) {
+        thumb.classList.toggle('is-active', thumbIndex === safeIndex);
+      });
+      active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+      slider.dataset.index = String(safeIndex);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      if (isPaused || thumbs.length <= 1) return;
+      autoPlayTimer = setInterval(function () {
+        render(currentIndex + 1);
+      }, autoPlayDelay);
+    }
+
+    function setPaused(paused) {
+      isPaused = paused;
+      if (paused) {
+        stopAutoPlay();
+      } else {
+        startAutoPlay();
+      }
+    }
+
+    function onPointerStart(event) {
+      const point = event.touches ? event.touches[0] : event;
+      startX = point.clientX;
+      startY = point.clientY;
+      isSwiping = true;
+    }
+
+    function onPointerEnd(event) {
+      if (!isSwiping) return;
+      const point = event.changedTouches ? event.changedTouches[0] : event;
+      const diffX = point.clientX - startX;
+      const diffY = point.clientY - startY;
+      isSwiping = false;
+
+      if (Math.abs(diffX) < swipeThreshold || Math.abs(diffX) <= Math.abs(diffY)) {
+        return;
+      }
+
+      if (diffX > 0) {
+        render(currentIndex - 1);
+      } else {
+        render(currentIndex + 1);
+      }
+    }
+
+    thumbs.forEach(function (thumb, index) {
+      thumb.addEventListener('click', function () {
+        render(index);
+      });
+    });
+
+    prevBtn.addEventListener('click', function () {
+      render(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', function () {
+      render(currentIndex + 1);
+    });
+
+    slider.addEventListener('mouseenter', function () {
+      setPaused(true);
+    });
+
+    slider.addEventListener('mouseleave', function () {
+      setPaused(false);
+    });
+
+    slider.addEventListener('focusin', function () {
+      setPaused(true);
+    });
+
+    slider.addEventListener('focusout', function (event) {
+      if (!slider.contains(event.relatedTarget)) {
+        setPaused(false);
+      }
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      setPaused(document.hidden);
+    });
+
+    mainStage.addEventListener('touchstart', onPointerStart, { passive: true });
+    mainStage.addEventListener('touchend', onPointerEnd, { passive: true });
+    mainStage.addEventListener('mousedown', onPointerStart);
+    mainStage.addEventListener('mouseup', onPointerEnd);
+
+    render(0);
+    startAutoPlay();
+  })();
+</script>
 </body>
 </html>
