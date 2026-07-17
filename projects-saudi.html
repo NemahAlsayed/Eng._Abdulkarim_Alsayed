@@ -1,84 +1,390 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مشاريع السعودية</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-      body { background: #f5f3ef; color: #163235; }
-      .hero-page {
-        background: linear-gradient(135deg, rgba(22,50,53,0.95), rgba(16,105,103,0.88)), url('img/WebsiteBanner.png') center/cover no-repeat;
-        color: #fff;
-        padding: 90px 0 70px;
-        text-align: center;
-      }
-      .hero-page h1 { font-weight: 800; margin-bottom: 15px; }
-      .hero-page p { max-width: 760px; margin: 0 auto; font-size: 18px; line-height: 1.9; }
-      .project-card {
-        background: #fff;
-        border-radius: 24px;
-        padding: 24px;
-        margin-bottom: 30px;
-        box-shadow: 0 18px 36px -18px rgba(0,0,0,0.35);
-        border-top: 4px solid #4fbc9c;
-        height: 100%;
-      }
-      .project-card img { width: 100%; border-radius: 18px; margin-bottom: 16px; }
-      .project-card h3 { margin-top: 0; color: #163235; }
-      .project-card p { line-height: 1.9; }
-      .section-title { text-align: center; margin: 45px 0 30px; }
-      .section-title h2 { font-weight: 800; }
-      .back-link { display: inline-block; margin-top: 20px; }
-    </style>
-  </head>
-  <body>
-    <section class="hero-page">
-      <div class="container">
-        <h1>مشاريع السعودية</h1>
-        <p>نماذج مختارة من أعمال التخطيط والإشراف والتنفيذ داخل المملكة، مع تركيز على الحلول العملية التي توازن بين الجودة والسرعة والجدوى الاقتصادية.</p>
-        <a class="btn btn-warning btn-lg back-link" href="index.html">العودة إلى الصفحة الرئيسية</a>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشاريع السعودية · عبدالكريم السيد</title>
+  <!-- Bootstrap 5 RTL (CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css" integrity="sha384-WJUUqfoMmnfkBLne5uxXj+na/c7sesSJ32gI7GfCk4zO4GthUKhSEGyvQ839BC51" crossorigin="anonymous">
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: #f4f3ef;
+      color: #1d3e41;
+      font-family: 'Segoe UI', 'Tahoma', 'Helvetica Neue', sans-serif;
+      padding: 0 0 40px 0;
+    }
+    /* hero section */
+    .hero-saudi {
+      background: linear-gradient(145deg, #154c4a 0%, #1e6b64 100%);
+      color: #fff;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 6px solid #d4b68a;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+    }
+    .hero-saudi h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+    .hero-saudi h1 i {
+      color: #f7d88b;
+      margin-left: 12px;
+    }
+    .hero-saudi p {
+      max-width: 780px;
+      margin: 0.8rem auto 1.8rem;
+      font-size: 1.2rem;
+      opacity: 0.92;
+      line-height: 1.9;
+    }
+    .btn-outline-light {
+      border-width: 2px;
+      font-weight: 600;
+      padding: 0.6rem 2rem;
+      border-radius: 40px;
+      transition: all 0.2s ease;
+    }
+    .btn-outline-light:hover {
+      background: #f7d88b;
+      color: #1d3e41;
+      border-color: #f7d88b;
+    }
+    .section-title {
+      text-align: center;
+      margin: 3.5rem 0 2.5rem;
+      position: relative;
+    }
+    .section-title h2 {
+      font-weight: 800;
+      font-size: 2.2rem;
+      color: #1d4a47;
+      display: inline-block;
+      background: #fff;
+      padding: 0.2rem 2.5rem;
+      border-radius: 60px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+    .section-title h2 i {
+      color: #b68b5c;
+      margin-left: 12px;
+    }
+    /* project card grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 0.5rem;
+    }
+    .project-card {
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 35px -10px rgba(0, 30, 30, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid rgba(200, 180, 150, 0.2);
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 45px -12px rgba(15, 60, 55, 0.35);
+    }
+    .card-img-top {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #dad3c7;
+      border-bottom: 2px solid #e3d6c4;
+    }
+    .card-body {
+      padding: 1.5rem 1.3rem 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body h5 {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #1f4e4b;
+      margin-bottom: 0.6rem;
+      border-bottom: 2px dashed #e0d3c2;
+      padding-bottom: 0.5rem;
+    }
+    .card-body h5 i {
+      color: #b68b5c;
+      margin-left: 10px;
+      font-size: 1.1rem;
+    }
+    .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #2d4d4a;
+      flex: 1;
+      margin-bottom: 0.8rem;
+    }
+    .project-tag {
+      display: inline-block;
+      background: #e7ded2;
+      border-radius: 40px;
+      padding: 0.2rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2f554f;
+      letter-spacing: 0.4px;
+      align-self: flex-start;
+      margin-top: 0.3rem;
+      border: 1px solid #cdbcab;
+    }
+    .footer-note {
+      text-align: center;
+      margin: 4rem auto 1rem;
+      border-top: 1px solid #dacfc1;
+      padding-top: 2.5rem;
+      color: #47635e;
+      font-size: 0.95rem;
+    }
+    .badge-cost {
+      background: #1f4e4b;
+      color: #f5efe5;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 0.4rem;
+    }
+    /* responsive */
+    @media (max-width: 576px) {
+      .hero-saudi h1 { font-size: 2rem; }
+      .section-title h2 { font-size: 1.5rem; padding: 0.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
 
-    <div class="container">
-      <div class="section-title">
-        <h2>أبرز المشاريع</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-1.jpg" alt="مشروع سكني في السعودية">
-            <h3>مشروع سكني متكامل</h3>
-            <p>تطوير مخطط سكني يراعي الحركة الداخلية، الخصوصية، وإدارة المرافق مع رؤية تنفيذية واضحة من الفكرة إلى التسليم.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-2.jpg" alt="مشروع تجاري في السعودية">
-            <h3>مرفق تجاري وخدماتي</h3>
-            <p>تصميم وإشراف على مساحة تجارية متعددة الاستخدامات، مع توظيف الفراغات بشكل يدعم التشغيل والاستثمار طويل الأمد.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-3.jpg" alt="مشروع إشراف تنفيذي في السعودية">
-            <h3>إشراف تنفيذي ومتابعة</h3>
-            <p>متابعة مراحل التنفيذ ميدانيًا لضمان الالتزام بالمواصفات، التحكم في الجودة، وتقليل الهدر في الوقت والكلفة.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-4.jpg" alt="مشروع تطوير استثماري في السعودية">
-            <h3>تطوير استثماري</h3>
-            <p>دراسة جدوى أولية ومقترحات تصميمية لمشروع استثماري يوازن بين الجاذبية المعمارية والعائد المتوقع.</p>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero-saudi">
+  <div class="container">
+    <h1><i class="fas fa-flag"></i> مشاريع السعودية</h1>
+    <p>
+      <i class="fas fa-hard-hat me-2"></i> أكثر من 40 عاماً من الخبرة في الإشراف، التخطيط، التنفيذ وإدارة المشاريع<br>
+      تشمل فنادق، قصور، مراكز تجارية، أبراج ومشاريع تطويرية في مختلف مناطق المملكة.
+    </p>
+    <a href="#" class="btn btn-outline-light mt-2" onclick="alert('تم إعداد هذه الصفحة لعرض مشاريع المهندس عبدالكريم السيد في المملكة')">
+      <i class="fas fa-chevron-left me-2"></i> استعراض المشاريع
+    </a>
+  </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+  <div class="section-title">
+    <h2><i class="fas fa-building"></i> أبرز المشاريع المنفذة</h2>
+  </div>
+
+  <!-- PROJECT GRID (12+ projects) -->
+  <div class="project-grid">
+
+    <!-- 1 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3b6b63/ffffff?text=فندق+مكة+هيلتون" class="card-img-top" alt="فندق مكة هيلتون">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> فندق مكة هيلتون</h5>
+        <p>استقبال جديد و توسعة – إشراف كامل على التنفيذ، متابعة الجدولة والجودة بالتعاون مع المقاولين.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 140 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
       </div>
     </div>
-  </body>
+
+    <!-- 2 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/4e7b72/ffffff?text=جدة+هيلتون" class="card-img-top" alt="جدة هيلتون">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> جدة هيلتون</h5>
+        <p>تطوير شامل، إدارة التكاليف والموارد، ضمان الجودة، ومراقبة الجدول الزمني للمشروع.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 40.5 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3a6b60/ffffff?text=المدينة+هيلتون" class="card-img-top" alt="المدينة هيلتون">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> المدينة هيلتون</h5>
+        <p>إدارة المشروع، التخطيط، الجدولة، والإشراف على المقاولين، مع تحقيق الجدوى الاقتصادية.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 15 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/4f7a6f/ffffff?text=لو+ميريديان+جدة" class="card-img-top" alt="لو ميريديان جدة">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> لو ميريديان جدة</h5>
+        <p>الإشراف على مراحل البناء، التدقيق الكمي، مراقبة التكاليف، وتنسيق أعمال الديكور.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 56 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3e6f65/ffffff?text=شيراتون+مكة" class="card-img-top" alt="شيراتون مكة">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> شيراتون مكة</h5>
+        <p>تخطيط وجدولة، إدارة العقود، متابعة التوريدات ومراقبة الجودة وفق أعلى المعايير.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 31 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/4f7b70/ffffff?text=تايبة+شيراتون+المدينة" class="card-img-top" alt="تايبة شيراتون">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> تايبة شيراتون المدينة</h5>
+        <p>مشروع تطويري، الإشراف على التنفيذ، إدارة التغييرات والتنسيق مع الاستشاريين.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4 ملايين ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3c6d63/ffffff?text=شيراتون+الهدا+الطائف" class="card-img-top" alt="شيراتون الهدا">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> شيراتون الهدا – الطائف</h5>
+        <p>إدارة المشروع، التخطيط المالي، متابعة الجدولة والإشراف على المقاولين والفنيين.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 3 ملايين ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/407168/ffffff?text=السلام+هوليداي+إن+جدة" class="card-img-top" alt="السلام هوليداي إن">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> السلام هوليداي إن جدة</h5>
+        <p>متابعة التنفيذ، مراقبة الجودة، إدارة المواد والموردين، وإعداد التقارير الدورية.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 24.2 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3d6f67/ffffff?text=هوليداي+إن+الرياض" class="card-img-top" alt="هوليداي إن الرياض">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> هوليداي إن العليا – الرياض</h5>
+        <p>إدارة المشروع، التخطيط، التحكم في التكاليف، وجدولة الأنشطة بالتعاون مع الفريق.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 7.3 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/47756a/ffffff?text=فندق+الشهداء+مكة" class="card-img-top" alt="فندق الشهداء مكة">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> فندق الشهداء – مكة</h5>
+        <p>إدارة إنشائية كاملة، مراقبة الجدول الزمني، التنسيق مع المقاولين والموردين.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 14 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3b6b63/ffffff?text=قصر+البحر+الأحمر+جدة" class="card-img-top" alt="قصر البحر الأحمر">
+      <div class="card-body">
+        <h5><i class="fas fa-archway"></i> قصر البحر الأحمر – جدة</h5>
+        <p>إشراف على التشطيبات والديكورات، متابعة الجودة وضبط التكاليف، تنسيق مع المصممين.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 11 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> قصر</span>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/42736a/ffffff?text=ترايدنت+خميس+مشيط" class="card-img-top" alt="ترايدنت خميس مشيط">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> ترايدنت – خميس مشيط</h5>
+        <p>التخطيط، إدارة العقود، متابعة التنفيذ، وضبط الجودة بالتعاون مع فريق العمل.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4.5 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 13 (extra) -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/4a776b/ffffff?text=ترايدنت+مكة" class="card-img-top" alt="ترايدنت مكة">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> ترايدنت – مكة</h5>
+        <p>تنفيذ وإدارة، مراقبة الكميات، التنسيق مع الاستشاريين، وضمان الالتزام بالجدول.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 4.5 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/3a6a60/ffffff?text=كوربان+المدينة" class="card-img-top" alt="كوربان المدينة">
+      <div class="card-body">
+        <h5><i class="fas fa-hotel"></i> فندق كوربان – المدينة</h5>
+        <p>إدارة المشروع، الإشراف الميداني، التحكم في الميزانية وتنسيق أعمال البناء.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 3 ملايين ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> فندق</span>
+      </div>
+    </div>
+
+    <!-- 15 -->
+    <div class="project-card">
+      <img src="https://placehold.co/600x400/4c7a6e/ffffff?text=قصر+الرياض+فندق" class="card-img-top" alt="قصر الرياض">
+      <div class="card-body">
+        <h5><i class="fas fa-archway"></i> قصر الرياض فندق</h5>
+        <p>إدارة كاملة، متابعة التشطيبات، التنسيق مع المصممين الداخليين ومراقبة الجودة.</p>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> 2.8 مليون ريال</span>
+        <span class="project-tag"><i class="fas fa-tag me-1"></i> قصر / فندق</span>
+      </div>
+    </div>
+
+  </div> <!-- end grid -->
+
+  <!-- مشاريع إضافية سريعة (ذكر) -->
+  <div class="mt-5 p-4 bg-white rounded-4 shadow-sm" style="border-right: 6px solid #b68b5c;">
+    <h5 class="fw-bold"><i class="fas fa-list-ul me-2" style="color:#b68b5c;"></i> مشاريع أخرى ضمن المحفظة</h5>
+    <div class="row row-cols-2 row-cols-md-4 g-3 mt-1 text-muted small">
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> النجدة – مكة</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> الصفا – مكة</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> الحارثي 2000 – جدة</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> بركات – مكة</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> جزيرة النورس – جدة</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> مركز إشبيلية</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> قصر خاص – ديكور</div>
+      <div class="col"><i class="fas fa-circle fa-2xs me-1" style="color:#4f7b70;"></i> أبراج موبايلي – الطائف</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    <i class="fas fa-crown me-2" style="color:#b68b5c;"></i> 
+    المهندس عبدالكريم السيد – خبرة تمتد لأكثر من 40 عاماً في المشاريع السعودية 
+    <i class="fas fa-crown me-2" style="color:#b68b5c;"></i>
+  </div>
+
+</div> <!-- /container -->
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
