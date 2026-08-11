@@ -186,9 +186,76 @@
       border-top: 1px solid #dacfc1;
       color: #4a6b63;
     }
+
+    /* القسم الجديد للخبرة المهنية */
+    .expertise-section {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2rem 2rem 1.8rem;
+      margin: 3rem 0 2.5rem;
+      box-shadow: 0 12px 28px -8px rgba(0,30,25,0.08);
+      border: 1px solid #e3d9cd;
+    }
+    .expertise-section h3 {
+      font-weight: 800;
+      color: #1a4e48;
+      border-right: 6px solid #b68b5c;
+      padding-right: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .expertise-section h3 i {
+      color: #b68b5c;
+      margin-left: 10px;
+    }
+    .expertise-section h4 {
+      font-weight: 700;
+      color: #1f554d;
+      margin-top: 1.8rem;
+      border-bottom: 2px solid #e8ddd0;
+      padding-bottom: 0.5rem;
+    }
+    .expertise-section ul {
+      padding-right: 1.5rem;
+      list-style: none;
+    }
+    .expertise-section ul li {
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-right: 1.6rem;
+    }
+    .expertise-section ul li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0;
+      color: #2d7a6b;
+      font-size: 0.9rem;
+    }
+    .expertise-section .sub-list {
+      padding-right: 2rem;
+    }
+    .expertise-section .sub-list li::before {
+      content: "\f0da";
+      color: #b68b5c;
+      font-size: 0.8rem;
+    }
+    .expertise-tag {
+      display: inline-block;
+      background: #e7ded0;
+      border-radius: 40px;
+      padding: 0.2rem 1.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2f554f;
+      border: 1px solid #cdbcab;
+      margin-left: 0.5rem;
+    }
+
     @media (max-width: 576px) {
       .hero-turkey h1 { font-size: 2rem; }
       .section-title h2 { font-size: 1.6rem; padding: 0.2rem 1.5rem; }
+      .expertise-section { padding: 1.5rem; }
     }
   </style>
 </head>
@@ -220,7 +287,7 @@
 
     <!-- المشروع الأول: ياكاموز أتاشهير (450-500 شقة) -->
     <div class="project-card">
-      <img src="img/Yakmuz.png" class="card-img-top" alt="مشروع ياكاموز">
+      <img src="img/Yakmuz.png" class="card-img-top" alt="مشروع ياكاموز أتاشهير">
       <div class="card-body">
         <h5><i class="fas fa-hotel"></i> مشروع ياكاموز · أتاشهير</h5>
         <p>مشروع سكني متكامل يضم 500 شقة (غرفة وصالة حتى 4 غرف)، مساحات من 80 إلى 200 م². يقع في قلب منطقة بارباروس، مع خدمات تجارية وترفيهية.</p>
@@ -232,7 +299,7 @@
       </div>
     </div>
 
-    <!-- المشروع الثاني: مجمع سكني استثماري (من الصور + وصف) -->
+    <!-- المشروع الثاني: مجمع سكني استثماري -->
     <div class="project-card">
       <img src="img/TRproject2.png" class="card-img-top" alt="مجمع أبراج أتاشهير">
       <div class="card-body">
@@ -246,7 +313,7 @@
       </div>
     </div>
 
-    <!-- المشروع الثالث: مشروع سكني فاخر (من الصور) -->
+    <!-- المشروع الثالث: مشروع سكني فاخر -->
     <div class="project-card">
       <img src="img/TRproject3.jpg" class="card-img-top" alt="مشروع سكني فاخر">
       <div class="card-body">
@@ -262,50 +329,80 @@
 
   </div> <!-- نهاية grid -->
 
-  <!-- مشاريع إضافية + معلومات عن أتاشهير -->
-  <div class="info-highlight">
-    <div class="row align-items-center">
-      <div class="col-lg-8">
-        <h5><i class="fas fa-location-dot me-2" style="color:#b68b5c;"></i> لماذا أتاشهير؟</h5>
-        <p class="mb-1">تُعد أتاشهير المركز المالي الجديد لاسطنبول، حيث ينتقل المصرف المركزي إليها مع 50 ألف موظف. تتميز بشوارع واسعة، خدمات متكاملة، ومقاومة للزلازل. قريبة من الجسر المعلق ومترو مرمراي، وترتبط بطرق رئيسية مثل TEM و E-5.</p>
-        <p class="small text-muted mt-2"><i class="fas fa-chart-simple me-1"></i> متوسط أسعار المتر المربع: 7,000 – 13,000 ليرة تركية</p>
-      </div>
-      <div class="col-lg-4 text-center">
-        <span class="badge-cost" style="font-size:1rem; padding:0.5rem 1.8rem;"><i class="fas fa-percent me-1"></i> نسبة الإشغال المتوقعة 70%</span>
-      </div>
-    </div>
-  </div>
+  <!-- ===== القسم المضاف: الخبرة المهنية - شركة المحيط ===== -->
+  <div class="expertise-section">
+    <h3><i class="fas fa-briefcase"></i> الخبرة المهنية · شركة المحيط</h3>
+    <div class="row">
+      <div class="col-lg-12">
+        <h4><i class="fas fa-user-tie"></i> مؤسس ومدير عام</h4>
+        <p class="fw-bold text-muted small">شركة المحيط | إسطنبول، تركيا  <span class="badge-cost me-2">2011-2024</span></p>
 
-  <!-- جدول صغير: أسعار الشقق في المنطقة + حجم المبيع -->
-  <div class="row g-4 mb-5">
-    <div class="col-md-6">
-      <div class="bg-white p-4 rounded-4 shadow-sm h-100 border border-light">
-        <h6 class="fw-bold"><i class="fas fa-calculator me-2" style="color:#b68b5c;"></i> أسعار المتر المربع (ليرة تركية)</h6>
-        <ul class="list-unstyled mt-3">
-          <li><i class="fas fa-square me-2" style="color:#2d6b5e;"></i> الحد الأدنى: 7,000 ₺</li>
-          <li><i class="fas fa-square me-2" style="color:#2d6b5e;"></i> الحد الأعلى: 13,000 ₺</li>
-          <li><i class="fas fa-chart-line me-2" style="color:#b68b5c;"></i> نسبة الطلب: 80% أتراك – 20% أجانب</li>
+        <h5 class="fw-bold mt-3" style="color:#1f554d;"><i class="fas fa-tasks me-2" style="color:#b68b5c;"></i>المهام</h5>
+        <ul>
+          <li>إدارة مشاريع واستثمارات الطاقة الشمسية.</li>
+          <li>إعادة الإعمار والتطوير العمراني</li>
+          <li>تصميم الديكور الداخلي.</li>
+          <li>تقديم التدريب الهندسي.</li>
+          <li>الإشراف على مشاريع البناء الأخضر.</li>
         </ul>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="bg-white p-4 rounded-4 shadow-sm h-100 border border-light">
-        <h6 class="fw-bold"><i class="fas fa-handshake me-2" style="color:#b68b5c;"></i> طريقة المشاركة</h6>
-        <p class="small">تقوم مجموعة المحيط بتمثيل المستثمرين وتأمين الضمان القانوني، بناءً على نظام شراكة المشروع. تتحمل المحيط كامل المسؤولية تجاه مستثمريها.</p>
-        <span class="badge-location"><i class="fas fa-gavel me-1"></i> عقود موثقة</span>
-        <span class="badge-location me-2"><i class="fas fa-users me-1"></i> شراكة مع بيلسا</span>
+
+        <h5 class="fw-bold mt-4" style="color:#1f554d;"><i class="fas fa-folder-open me-2" style="color:#b68b5c;"></i>نبذة من المشاريع المنفذة</h5>
+
+        <!-- مشروع 1 -->
+        <div class="mt-3">
+          <h6 class="fw-bold"><i class="fas fa-solar-panel me-2" style="color:#b68b5c;"></i>1. مشاريع الطاقة الشمسية للمباني السكنية والتجارية</h6>
+          <p class="small text-muted mb-1">شملت:</p>
+          <ul class="sub-list">
+            <li>تصميم الأنظمة</li>
+            <li>حساب الأحمال</li>
+            <li>تركيب الألواح</li>
+            <li>تدريب الفنيين</li>
+          </ul>
+          <p class="small"><i class="fas fa-check-circle me-1" style="color:#2d7a6b;"></i> المشاريع ساهمت في خفض تكاليف الطاقة بنسبة تصل إلى 40%.</p>
+        </div>
+
+        <!-- مشروع 2 -->
+        <div class="mt-3">
+          <h6 class="fw-bold"><i class="fas fa-couch me-2" style="color:#b68b5c;"></i>2. مشاريع الديكور الداخلي للفنادق الفاخرة</h6>
+          <p class="small text-muted mb-1">تضمّن:</p>
+          <ul class="sub-list">
+            <li>تصميم الأثاث</li>
+            <li>اختيار المواد</li>
+            <li>الإشراف على التنفيذ</li>
+          </ul>
+          <p class="small"><i class="fas fa-check-circle me-1" style="color:#2d7a6b;"></i> المشاريع استهدفت فنادق 4 و5 نجوم.</p>
+        </div>
+
+        <!-- مشروع 3 -->
+        <div class="mt-3">
+          <h6 class="fw-bold"><i class="fas fa-leaf me-2" style="color:#b68b5c;"></i>3. استشارات البناء الأخضر</h6>
+          <p class="small text-muted mb-1">شملت:</p>
+          <ul class="sub-list">
+            <li>تحسين كفاءة الطاقة</li>
+            <li>اختيار مواد صديقة للبيئة</li>
+            <li>تصميم أنظمة تهوية طبيعية</li>
+          </ul>
+          <p class="small"><i class="fas fa-check-circle me-1" style="color:#2d7a6b;"></i> المشاريع ساعدت في تقليل الانبعاثات وتحسين جودة المباني.</p>
+        </div>
+
+        <div class="mt-3">
+          <span class="expertise-tag"><i class="fas fa-calendar-alt me-1"></i> 2011-2024</span>
+          <span class="expertise-tag"><i class="fas fa-map-marker-alt me-1"></i> اسطنبول</span>
+        </div>
       </div>
     </div>
   </div>
+  <!-- ===== نهاية القسم المضاف ===== -->
 
   <!-- شركاؤنا (شعارات) -->
   <h5 class="fw-bold text-center mt-4"><i class="fas fa-handshake me-2" style="color:#b68b5c;"></i> شركاؤنا في التطوير</h5>
   <div class="partner-logos my-4">
-    <img src="img/Bilsa.jpg" alt="شريك">
-    <img src="img/AlphaGroup.png" alt="شريك">
-    <img src="img/InfoTech.png" alt="شريك">
-    <img src="img/YonYapi.png" alt="شريك">
+    <img src="img/Bilsa.jpg" alt="شريك بيلسا">
+    <img src="img/AlphaGroup.png" alt="شريك ألفا">
+    <img src="img/InfoTech.png" alt="شريك إنفو تك">
+    <img src="img/YonYapi.png" alt="شريك يون يابي">
   </div>
+
   <!-- footer -->
   <div class="footer-note">
     <i class="fas fa-flag me-2" style="color:#b68b5c;"></i>
@@ -315,7 +412,6 @@
 
 </div> <!-- /container -->
 
-<!-- Bootstrap JS (optional) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

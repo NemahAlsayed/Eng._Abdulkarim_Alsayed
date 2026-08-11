@@ -1,84 +1,298 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>المشاريع المقترحة</title>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <style>
-      body { background: #f5f3ef; color: #163235; }
-      .hero-page {
-        background: linear-gradient(135deg, rgba(22,50,53,0.95), rgba(16,105,103,0.88)), url('img/WebsiteBanner.png') center/cover no-repeat;
-        color: #fff;
-        padding: 90px 0 70px;
-        text-align: center;
-      }
-      .hero-page h1 { font-weight: 800; margin-bottom: 15px; }
-      .hero-page p { max-width: 760px; margin: 0 auto; font-size: 18px; line-height: 1.9; }
-      .project-card {
-        background: #fff;
-        border-radius: 24px;
-        padding: 24px;
-        margin-bottom: 30px;
-        box-shadow: 0 18px 36px -18px rgba(0,0,0,0.35);
-        border-top: 4px solid #4db5d9;
-        height: 100%;
-      }
-      .project-card img { width: 100%; border-radius: 18px; margin-bottom: 16px; }
-      .project-card h3 { margin-top: 0; color: #163235; }
-      .project-card p { line-height: 1.9; }
-      .section-title { text-align: center; margin: 45px 0 30px; }
-      .section-title h2 { font-weight: 800; }
-      .back-link { display: inline-block; margin-top: 20px; }
-    </style>
-  </head>
-  <body>
-    <section class="hero-page">
-      <div class="container">
-        <h1>المشاريع المقترحة</h1>
-        <p>أفكار أولية لمشاريع مستقبلية قابلة للتطوير، تركّز على الاستثمار الذكي، الطاقة، والتوسع المرحلي بحسب احتياج الموقع.</p>
-        <a class="btn btn-warning btn-lg back-link" href="index.html">العودة إلى الصفحة الرئيسية</a>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المشاريع المقترحة · المهندس عبدالكريم السيد</title>
+  <!-- Bootstrap 5 RTL -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background: #f5f3ee;
+      color: #1d3e3b;
+      font-family: 'Segoe UI', Tahoma, 'Helvetica Neue', sans-serif;
+    }
+    .hero-suggested {
+      background: linear-gradient(145deg, #2d5a4f 0%, #3d7a6b 100%);
+      color: #fff;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 6px solid #c9b08c;
+    }
+    .hero-suggested h1 {
+      font-weight: 800;
+      font-size: 2.8rem;
+      letter-spacing: 0.5px;
+    }
+    .hero-suggested h1 i {
+      color: #f7d88b;
+      margin-left: 15px;
+    }
+    .hero-suggested p {
+      max-width: 780px;
+      margin: 0.8rem auto 1.8rem;
+      font-size: 1.2rem;
+      opacity: 0.93;
+      line-height: 1.9;
+    }
+    .btn-soft-light {
+      background: rgba(255,255,255,0.12);
+      border: 2px solid #e7dccb;
+      color: #fff;
+      border-radius: 60px;
+      padding: 0.6rem 2.2rem;
+      font-weight: 600;
+      transition: 0.25s;
+      text-decoration: none;
+    }
+    .btn-soft-light:hover {
+      background: #f7d88b;
+      color: #1d3e3b;
+      border-color: #f7d88b;
+    }
+    .section-title {
+      text-align: center;
+      margin: 3.5rem 0 2.8rem;
+    }
+    .section-title h2 {
+      font-weight: 800;
+      font-size: 2.3rem;
+      color: #1a4e48;
+      background: #fff;
+      display: inline-block;
+      padding: 0.3rem 2.8rem;
+      border-radius: 60px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+    }
+    .section-title h2 i {
+      color: #b68b5c;
+      margin-left: 12px;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 18px 32px -12px rgba(15, 50, 45, 0.20);
+      transition: all 0.25s ease;
+      border: 1px solid #e3d9cd;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 48px -14px rgba(10, 60, 50, 0.3);
+    }
+    .card-img-top {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: #cec3b2;
+      border-bottom: 2px solid #dacfc1;
+    }
+    .card-body {
+      padding: 1.5rem 1.3rem 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-body h5 {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #1b4e48;
+      border-bottom: 2px dashed #dfd2c0;
+      padding-bottom: 0.6rem;
+      margin-bottom: 0.8rem;
+    }
+    .card-body h5 i {
+      color: #b68b5c;
+      margin-left: 12px;
+    }
+    .card-body p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #2b4f49;
+      flex: 1;
+    }
+    .badge-location {
+      background: #e7ded0;
+      color: #2d534b;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid #cebcab;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .badge-cost {
+      background: #1b4e48;
+      color: #f5efe5;
+      padding: 0.2rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+    .back-link {
+      display: inline-block;
+      background: #b68b5c;
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+      margin-top: 0.5rem;
+    }
+    .back-link:hover {
+      background: #1a4e48;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .footer-note {
+      text-align: center;
+      margin: 3.5rem auto 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid #dacfc1;
+      color: #4a6b63;
+    }
+    @media (max-width: 576px) {
+      .hero-suggested h1 { font-size: 2rem; }
+      .section-title h2 { font-size: 1.6rem; padding: 0.2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
 
-    <div class="container">
-      <div class="section-title">
-        <h2>أفكار المشاريع</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-1.jpg" alt="مشروع سكني مقترح">
-            <h3>مجمع سكني مقترح</h3>
-            <p>تصور مبدئي لمجمع سكني يوفر مرونة في التوزيع الداخلي ويستوعب مراحل تنفيذ متعددة.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-2.jpg" alt="مركز أعمال مقترح">
-            <h3>مركز أعمال</h3>
-            <p>مقترح لمركز أعمال متعدد الاستخدامات يدمج المكاتب والخدمات والواجهات الاستثمارية الجاذبة.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-3.jpg" alt="مشروع طاقة شمسية مقترح">
-            <h3>مشروع طاقة شمسية</h3>
-            <p>خيار استثماري يدعم الاستدامة ويعزز كفاءة التشغيل عبر مصدر طاقة نظيف وقابل للتوسع.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-card">
-            <img src="img/portfolio-4.jpg" alt="مشروع تطوير استثماري مقترح">
-            <h3>تطوير استثماري مرحلي</h3>
-            <p>رؤية لمشروع يمكن تقسيمه إلى مراحل لضبط المخاطر وتحسين العائد بحسب ظروف السوق والتمويل.</p>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero-suggested">
+  <div class="container">
+    <h1><i class="fas fa-lightbulb"></i> المشاريع المقترحة</h1>
+    <p>
+      <i class="fas fa-hard-hat me-2"></i> المهندس عبدالكريم السيد – خبرة 39 عاماً في إدارة المشاريع الكبرى<br>
+      مجموعة من المشاريع التنموية والاستثمارية المقترحة لدعم إعادة الإعمار والنهضة الاقتصادية في سوريا.
+    </p>
+    <a href="#" class="btn-soft-light" onclick="alert('استعراض المشاريع المقترحة')">
+      <i class="fas fa-chevron-left me-2"></i> استكشف المشاريع
+    </a>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- عنوان المشاريع -->
+  <div class="section-title">
+    <h2><i class="fas fa-list"></i> المشاريع المقترحة</h2>
+  </div>
+
+  <!-- شبكة المشاريع المقترحة (2, 4, 5, 6, 8, 10, 11) -->
+  <div class="project-grid">
+
+    <!-- 2. مصنع ألياف البازلت -->
+    <div class="project-card">
+      <img src="img/BasaltFactory.png" class="card-img-top" alt="مصنع ألياف البازلت">
+      <div class="card-body">
+        <h5><i class="fas fa-industry"></i> مصنع ألياف البازلت</h5>
+        <p>مشروع صناعي استراتيجي لإنتاج ألياف البازلت عالية القوة. يخدم قطاعات البناء، السيارات، والطيران. يشمل دراسة المواد الخام، خطوط الإنتاج، وتحليل الأسواق.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> السعودية · سوريا</span>
+        <span class="badge-cost"><i class="fas fa-coins me-1"></i> صناعي استراتيجي</span>
       </div>
     </div>
-  </body>
+
+    <!-- 4. مشافي السياحة العلاجية -->
+    <div class="project-card">
+      <img src="img/Hospitals.png" class="card-img-top" alt="مشافي السياحة العلاجية">
+      <div class="card-body">
+        <h5><i class="fas fa-hospital"></i> مشافي السياحة العلاجية</h5>
+        <p>دراسة جدوى إنشاء مشافي متطورة للسياحة العلاجية في سوريا. تشمل تحديد التخصصات الطبية، تصميم الأقسام، حساب التكاليف، وإعداد خطة تشغيلية.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> سوريا · سياحي</span>
+        <span class="badge-cost"><i class="fas fa-heartbeat me-1"></i> صحي · سياحي</span>
+      </div>
+    </div>
+
+    <!-- 5. الزراعة الكهروضوئية Agrivoltaics -->
+    <div class="project-card">
+      <img src="img/Agrivoltaics.png" class="card-img-top" alt="الزراعة الكهروضوئية">
+      <div class="card-body">
+        <h5><i class="fas fa-seedling"></i> الزراعة الكهروضوئية</h5>
+        <p>دمج الألواح الشمسية مع الزراعة لزيادة الإنتاجية وتقليل التكاليف. يشمل تصميم نظام PV، دراسة تأثير الظل، وحساب العائد الطاقي والزراعي.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> سوريا · ريفي</span>
+        <span class="badge-cost"><i class="fas fa-sun me-1"></i> طاقة · زراعة</span>
+      </div>
+    </div>
+
+    <!-- 6. منتجعات السياحة الإسلامية -->
+    <div class="project-card">
+      <img src="img/IslamicResorts.png" class="card-img-top" alt="السياحة الإسلامية">
+      <div class="card-body">
+        <h5><i class="fas fa-umbrella-beach"></i> منتجعات السياحة الإسلامية</h5>
+        <p>مشروع سياحي ضخم يستهدف العائلات المحافظة. يشمل تصميم وحدات فندقية متوافقة مع الخصوصية، مرافق منفصلة، ودراسة الخدمات الترفيهية.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> تركيا · سوريا</span>
+        <span class="badge-cost"><i class="fas fa-star me-1"></i> سياحي فاخر</span>
+      </div>
+    </div>
+
+    <!-- 8. مدارس عالمية متطورة -->
+    <div class="project-card">
+      <img src="img/Schools.png" class="card-img-top" alt="مدارس عالمية">
+      <div class="card-body">
+        <h5><i class="fas fa-school"></i> مدارس عالمية متطورة</h5>
+        <p>مشروع تعليمي متكامل يشمل تصميم مدارس عالمية المستوى، مع دراسة احتياجات السوق، تحديد المناهج، وإعداد خطة تشغيلية قابلة للتوسع.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> سوريا</span>
+        <span class="badge-cost"><i class="fas fa-graduation-cap me-1"></i> تعليمي</span>
+      </div>
+    </div>
+
+    <!-- 10. ترسانة صيانة سفن -->
+    <div class="project-card">
+      <img src="img/ShipRepair.png" class="card-img-top" alt="ترسانة صيانة سفن">
+      <div class="card-body">
+        <h5><i class="fas fa-ship"></i> ترسانة صيانة سفن</h5>
+        <p>دراسة جدوى وتصميم ترسانة متكاملة لصيانة السفن، تشمل تحديد المعدات، التجهيزات، وإعداد خطة تشغيلية تدعم قطاع النقل البحري.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> سوريا · ساحلي</span>
+        <span class="badge-cost"><i class="fas fa-anchor me-1"></i> بحري</span>
+      </div>
+    </div>
+
+    <!-- 11. صيانة وتطوير أرصفة ميناء -->
+    <div class="project-card">
+      <img src="img/Docks.png" class="card-img-top" alt="أرصفة ميناء">
+      <div class="card-body">
+        <h5><i class="fas fa-water"></i> صيانة وتطوير أرصفة ميناء</h5>
+        <p>مشروع لتطوير البنية التحتية للموانئ، يشمل دراسة الأعمال الإنشائية، أنظمة التحميل والتفريغ، وتحسين الكفاءة التشغيلية.</p>
+        <span class="badge-location"><i class="fas fa-map-pin me-1"></i> سوريا · ساحلي</span>
+        <span class="badge-cost"><i class="fas fa-crane me-1"></i> بنية تحتية</span>
+      </div>
+    </div>
+
+  </div> <!-- نهاية grid -->
+
+  <!-- رابط العودة إلى الصفحة الرئيسية -->
+  <div class="text-center my-4">
+    <a href="projects-syria.html" class="back-link">
+      <i class="fas fa-arrow-right me-2"></i> العودة إلى مشاريع سوريا
+    </a>
+  </div>
+
+  <!-- footer -->
+  <div class="footer-note">
+    <i class="fas fa-flag me-2" style="color:#b68b5c;"></i>
+    المهندس عبدالكريم السيد · خبرة 39 عاماً في إدارة المشاريع الكبرى
+    <i class="fas fa-flag me-2" style="color:#b68b5c;"></i>
+  </div>
+
+</div> <!-- /container -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
