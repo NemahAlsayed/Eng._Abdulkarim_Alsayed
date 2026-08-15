@@ -14,6 +14,113 @@
     <!-- Add custom CSS here -->
     <link href="css/stylish-portfolio.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+      .contact-modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.65);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        padding: 20px;
+      }
+
+      .contact-modal.open {
+        display: flex;
+      }
+
+      .contact-modal-dialog {
+        width: min(100%, 540px);
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+      }
+
+      .contact-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 22px 10px;
+      }
+
+      .contact-modal-header h3 {
+        margin: 0;
+        color: #1f2d3d;
+        font-weight: 700;
+      }
+
+      .contact-modal-close {
+        border: none;
+        background: transparent;
+        font-size: 32px;
+        line-height: 1;
+        cursor: pointer;
+        color: #6b7280;
+      }
+
+      .contact-modal-body {
+        padding: 0 22px 22px;
+      }
+
+      .contact-form .row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .contact-form .col-half {
+        flex: 1 1 180px;
+      }
+
+      .contact-form label {
+        display: block;
+        margin-bottom: 6px;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        outline: 2px solid rgba(41, 98, 255, 0.18);
+        border-color: #4f46e5;
+      }
+
+      .contact-form textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .contact-form button {
+        width: 100%;
+        margin-top: 16px;
+      }
+
+      .contact-form-status {
+        margin-top: 12px;
+        font-size: 14px;
+        min-height: 20px;
+        color: #1f7a45;
+      }
+
+      @media (max-width: 768px) {
+        .contact-form .row {
+          flex-direction: column;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -177,7 +284,10 @@
 
     <!-- Map -->
     <div id="contact" class="map">
-      <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small></iframe>
+      <div class="text-center" style="margin-bottom: 15px; position: relative; z-index: 2;">
+        <button type="button" class="btn btn-primary btn-lg contact-modal-trigger">تواصل معنا</button>
+      </div>
+      <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Saudi+Arabia&z=6&output=embed"></iframe><br /><small><a href="https://maps.app.goo.gl/AHD29DRkMLgHJbN69" target="_blank" rel="noopener noreferrer">Open location</a></small></iframe>
     </div>
     <!-- /Map -->
     
@@ -186,25 +296,185 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 text-center">
-            <ul class="list-inline">
-              <li><i class="fa fa-facebook fa-3x"></i></li>
-              <li><i class="fa fa-twitter fa-3x"></i></li>
-              <li><i class="fa fa-dribbble fa-3x"></i></li>
-            </ul>
             <div class="top-scroll">
               <a href="#top"><i class="fa fa-circle-arrow-up scroll fa-4x"></i></a>
             </div>
             <hr>
-            <p>جميع الحقوق محفوظة &copy; 2013</p>
+            <p><a href="#contact" style="color: inherit; text-decoration: none;">تواصل معنا</a></p>
+            <p>جميع الحقوق محفوظة &copy; 2026</p>
           </div>
         </div>
       </div>
     </footer>
     <!-- /Footer -->
 
+    <div id="contact-modal" class="contact-modal" aria-hidden="true">
+      <div class="contact-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+        <div class="contact-modal-header">
+          <h3 id="contactModalTitle">تواصل معنا</h3>
+          <button type="button" class="contact-modal-close" aria-label="إغلاق">×</button>
+        </div>
+        <div class="contact-modal-body">
+          <form id="contact-form" class="contact-form">
+            <div class="row">
+              <div class="col-half">
+                <label for="first_name">الاسم الأول</label>
+                <input id="first_name" name="first_name" type="text" required>
+              </div>
+              <div class="col-half">
+                <label for="last_name">اسم العائلة</label>
+                <input id="last_name" name="last_name" type="text" required>
+              </div>
+            </div>
+
+            <div class="row" style="margin-top: 12px;">
+              <div class="col-half">
+                <label for="email">البريد الإلكتروني</label>
+                <input id="email" name="email" type="email" required>
+              </div>
+              <div class="col-half">
+                <label for="phone_number">رقم الهاتف</label>
+                <input id="phone_number" name="phone_number" type="tel" required>
+              </div>
+            </div>
+
+            <div style="margin-top: 12px;">
+              <label for="message">الرسالة</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg">إرسال</button>
+            <div id="contact-form-status" class="contact-form-status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <!-- JavaScript -->
     <script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script>
+      const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzU2I_Zrn1q2nRZk8UcecjMrl3Yq1z-s34aNYBUMOekz25kePIq4t4FUfyq11OcmBzebA/exec';
+      const GOOGLE_SHEET_NAME = 'Abdulkarim_Contacts';
+      const contactModal = document.getElementById('contact-modal');
+      const contactForm = document.getElementById('contact-form');
+      const contactStatus = document.getElementById('contact-form-status');
+
+      function openContactModal() {
+        contactModal.classList.add('open');
+        contactModal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeContactModal() {
+        contactModal.classList.remove('open');
+        contactModal.setAttribute('aria-hidden', 'true');
+      }
+
+      document.querySelectorAll('.contact-modal-trigger, a[href="#contact"]').forEach(function(trigger) {
+        trigger.addEventListener('click', function(event) {
+          event.preventDefault();
+          openContactModal();
+        });
+      });
+
+      document.querySelector('.contact-modal-close').addEventListener('click', closeContactModal);
+
+      contactModal.addEventListener('click', function(event) {
+        if (event.target === contactModal) {
+          closeContactModal();
+        }
+      });
+
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeContactModal();
+        }
+      });
+
+      contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(contactForm);
+        const payload = {
+          first_name: (formData.get('first_name') || '').toString().trim(),
+          last_name: (formData.get('last_name') || '').toString().trim(),
+          email: (formData.get('email') || '').toString().trim(),
+          phone_number: (formData.get('phone_number') || '').toString().trim(),
+          message: (formData.get('message') || '').toString().trim(),
+          sheet_name: GOOGLE_SHEET_NAME
+        };
+
+        if (!payload.first_name || !payload.last_name || !payload.email || !payload.phone_number || !payload.message) {
+          contactStatus.textContent = 'يرجى ملء جميع الحقول المطلوبة.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        if (payload.first_name.length < 2 || payload.first_name.length > 30 || !/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(payload.first_name)) {
+          contactStatus.textContent = 'اسمك الأول يجب أن يحتوي بين 2 و30 حرفًا فقط.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        if (payload.last_name.length < 2 || payload.last_name.length > 30 || !/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(payload.last_name)) {
+          contactStatus.textContent = 'اسم العائلة يجب أن يحتوي بين 2 و30 حرفًا فقط.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(payload.email)) {
+          contactStatus.textContent = 'يرجى إدخال بريد إلكتروني صحيح.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        const phonePattern = /^\+?[0-9\s-]{7,20}$/;
+        if (!phonePattern.test(payload.phone_number)) {
+          contactStatus.textContent = 'يرجى إدخال رقم هاتف صحيح (7 إلى 20 رقمًا).';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        if (payload.message.length < 10 || payload.message.length > 500) {
+          contactStatus.textContent = 'الرسالة يجب أن تكون بين 10 و500 حرف.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        if (!GOOGLE_SHEET_WEB_APP_URL || GOOGLE_SHEET_WEB_APP_URL.includes('PASTE_')) {
+          contactStatus.textContent = 'أضف رابط Google Apps Script في المتغير GOOGLE_SHEET_WEB_APP_URL.';
+          contactStatus.style.color = '#b91c1c';
+          return;
+        }
+
+        contactStatus.textContent = 'جاري إرسال الرسالة...';
+        contactStatus.style.color = '#1f7a45';
+
+        try {
+          await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: new URLSearchParams(payload).toString()
+          });
+
+          contactStatus.textContent = 'تم إرسال الرسالة بنجاح.';
+          contactStatus.style.color = '#1f7a45';
+          contactForm.reset();
+
+          setTimeout(function() {
+            closeContactModal();
+          }, 1200);
+        } catch (error) {
+          contactStatus.textContent = 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
+          contactStatus.style.color = '#b91c1c';
+        }
+      });
+    </script>
 
     <!-- Custom JavaScript for the Side Menu and Smooth Scrolling -->
     <script>
