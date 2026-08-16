@@ -1,0 +1,141 @@
+/* Shared side navigation menu & footer styles, reused on every page of the site */
+
+:root {
+  --nav-ink: #163235;
+  --nav-teal: #106967;
+  --nav-mint: #4fbc9c;
+  --nav-sky: #32bfda;
+  --nav-gold: #efca7c;
+  --nav-white: #ffffff;
+  --nav-text: #3b3f41;
+  --nav-surface: #f8f5ee;
+}
+
+/* Side Menu */
+#sidebar-wrapper {
+  right: -250px;
+  width: 250px;
+  background: var(--nav-gold);
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper.active {
+  right: 0;
+  transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  right: 0;
+}
+
+.sidebar-nav li {
+  line-height: 40px;
+  padding-right: 20px;
+  text-indent: 0;
+  text-align: right;
+}
+
+.sidebar-nav li a {
+  color: var(--nav-text);
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav li a:hover {
+  color: var(--nav-white);
+  background: var(--nav-teal);
+  text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 55px;
+  line-height: 55px;
+  font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: var(--nav-ink);
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: var(--nav-white);
+  background: none;
+}
+
+.sidebar-nav > a.toggle {
+  float: left;
+}
+
+.pull-right {
+  float: left;
+}
+
+#menu-toggle {
+  top: 0;
+  right: 0;
+  position: fixed;
+  z-index: 2001;
+}
+
+.toggle {
+  margin: 5px 5px 0 0;
+  cursor: pointer;
+}
+
+#menu-toggle.btn-primary,
+.sidebar-nav > a.toggle.btn-default {
+  color: var(--nav-white);
+  background-color: var(--nav-teal);
+  border-color: var(--nav-gold);
+}
+
+#menu-toggle.btn-primary:hover,
+#menu-toggle.btn-primary:focus,
+.sidebar-nav > a.toggle.btn-default:hover,
+.sidebar-nav > a.toggle.btn-default:focus {
+  color: var(--nav-ink);
+  background-color: var(--nav-gold);
+  border-color: var(--nav-sky);
+}
+
+/* Footer */
+footer.site-footer {
+  padding: 60px 0;
+  background: var(--nav-surface);
+  color: var(--nav-text);
+  text-align: center;
+}
+
+footer.site-footer .top-scroll {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+footer.site-footer .top-scroll a {
+  text-decoration: none;
+  color: var(--nav-teal);
+}
+
+footer.site-footer .top-scroll a:hover {
+  color: var(--nav-mint);
+}
+
+footer.site-footer hr {
+  border-top-color: rgba(59, 63, 65, 0.18);
+}

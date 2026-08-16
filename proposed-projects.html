@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Shared site navigation & footer -->
+  <link rel="stylesheet" href="css/site-nav.css">
   <style>
     body {
       background: #f5f3ee;
@@ -174,8 +176,24 @@
 </head>
 <body>
 
+<!-- Side Menu -->
+<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fas fa-bars"></i></a>
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fas fa-times"></i></a>
+    <li class="sidebar-brand"><a href="index.html">منصة المستشار</a></li>
+    <li><a href="index.html#top">الرئيسية</a></li>
+    <li><a href="index.html#about">نبذة تعريفية</a></li>
+    <li><a href="about-me.html">عنّي</a></li>
+    <li><a href="index.html#services">الخدمات</a></li>
+    <li><a href="index.html#portfolio">معرض الأعمال</a></li>
+    <li><a href="index.html#contact">تواصل معي</a></li>
+  </ul>
+</div>
+<!-- /Side Menu -->
+
+<a id="top"></a>
 <!-- HERO -->
-<section class="hero-suggested">
   <div class="container">
     <h1><i class="fas fa-lightbulb"></i> المشاريع المقترحة</h1>
     <p>
@@ -292,6 +310,43 @@
   </div>
 
 </div> <!-- /container -->
+
+<!-- Site Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="top-scroll">
+      <a href="#top"><i class="fas fa-arrow-circle-up fa-2x"></i></a>
+    </div>
+    <hr>
+    <p><a href="index.html#contact" style="color: inherit; text-decoration: none;">تواصل معنا</a></p>
+    <p>جميع الحقوق محفوظة &copy; 2026</p>
+  </div>
+</footer>
+<!-- /Site Footer -->
+
+<script>
+  (function () {
+    var toggleBtn = document.getElementById('menu-toggle');
+    var closeBtn = document.getElementById('menu-close');
+    var sidebar = document.getElementById('sidebar-wrapper');
+
+    function toggleSidebar(e) {
+      e.preventDefault();
+      sidebar.classList.toggle('active');
+    }
+
+    toggleBtn.addEventListener('click', toggleSidebar);
+    closeBtn.addEventListener('click', toggleSidebar);
+
+    document.querySelectorAll('#sidebar-wrapper a[href]').forEach(function (link) {
+      if (link.id !== 'menu-close') {
+        link.addEventListener('click', function () {
+          sidebar.classList.remove('active');
+        });
+      }
+    });
+  })();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
