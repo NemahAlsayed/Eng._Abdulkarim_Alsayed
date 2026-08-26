@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="طلب استشارة مجانية لإعداد دراسات الجدوى الاقتصادية والهندسية مع المستشار المهندس عبد الكريم السيد.">
+  <title>الاستشارة المجانية لدراسة الجدوى · المستشار عبد الكريم السيد</title>
+
+  <!-- Bootstrap 5 RTL -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Shared site navigation & footer -->
+  <link rel="stylesheet" href="css/site-nav.css">
+  <!-- Google Font (Cairo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f5f3f0;
+      color: #1e2b2c;
+    }
+    :root {
+      --primary-dark: #163235;
+      --primary-teal: #106967;
+      --accent-green: #4fbc9c;
+      --accent-blue: #32bfda;
+      --accent-gold: #efca7c;
+      --light-bg: #f8f6f1;
+    }
+
+    /* Hero header */
+    .hero-consultation {
+      background: linear-gradient(145deg, var(--primary-dark) 0%, #1d4a47 100%);
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 2.5rem 2.5rem;
+      padding: 3.5rem 1.5rem 4rem;
+      color: #fff;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.35);
+    }
+    .hero-consultation::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(79,188,156,0.18) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-consultation::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(239,202,124,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-bottom: 0.8rem;
+    }
+    .hero-title .highlight {
+      color: var(--accent-gold);
+      border-bottom: 4px solid var(--accent-green);
+      padding-bottom: 2px;
+    }
+    .hero-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.15rem;
+      max-width: 820px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .badge-consult {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(239,202,124,0.3);
+      color: #fff;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(4px);
+    }
+    .badge-consult i {
+      color: var(--accent-gold);
+      margin-left: 6px;
+    }
+
+    /* Main Card */
+    .form-card {
+      background: #ffffff;
+      border-radius: 2rem;
+      padding: 2.5rem;
+      box-shadow: 0 18px 40px -10px rgba(16, 50, 45, 0.12);
+      border: 1px solid rgba(16, 105, 103, 0.15);
+      margin-top: -2rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .form-section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 2px dashed rgba(16, 105, 103, 0.18);
+      padding-bottom: 0.6rem;
+    }
+    .form-section-title i {
+      color: var(--primary-teal);
+      background: rgba(16, 105, 103, 0.1);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #2c3e3f;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .form-label .required-star {
+      color: #d93838;
+      margin-right: 3px;
+    }
+
+    .form-control, .form-select {
+      border: 1px solid #d1d8d8;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      font-size: 0.98rem;
+      background-color: #faf8f5;
+      transition: all 0.2s ease;
+      color: #1e2b2c;
+    }
+    .form-control:focus, .form-select:focus {
+      background-color: #fff;
+      border-color: var(--primary-teal);
+      box-shadow: 0 0 0 4px rgba(16, 105, 103, 0.15);
+      outline: none;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%20106967' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+      background-position: left 0.9rem center;
+      background-size: 16px 12px;
+    }
+
+    .btn-submit-consultation {
+      background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.15rem;
+      padding: 0.9rem 2.5rem;
+      border-radius: 50px;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 10px 22px rgba(16, 105, 103, 0.3);
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .btn-submit-consultation:hover {
+      background: linear-gradient(135deg, #137e7a 0%, #1f4a47 100%);
+      color: var(--accent-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(16, 105, 103, 0.4);
+    }
+
+    /* Benefits side cards */
+    .benefit-card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid #e2dad0;
+      box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.2rem;
+      transition: transform 0.25s ease;
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-green);
+    }
+    .benefit-icon {
+      font-size: 1.8rem;
+      color: var(--primary-teal);
+      margin-bottom: 0.6rem;
+    }
+    .benefit-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+    .benefit-desc {
+      font-size: 0.9rem;
+      color: #4a5d5e;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .form-status-alert {
+      display: none;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-teal);
+      text-decoration: none;
+      font-weight: 700;
+      background: #fff;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      border: 1px solid #d4c8bd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+    .back-home-btn:hover {
+      background: var(--primary-teal);
+      color: #fff;
+      border-color: var(--primary-teal);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2.1rem; }
+      .form-card { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <a id="top"></a>
+
+  <!-- Side Menu -->
+  <a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="fas fa-bars"></i></a>
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="fas fa-times"></i></a>
+      <li class="sidebar-brand"><a href="index.html">منصة المستشار</a></li>
+      <li><a href="index.html#top">الرئيسية</a></li>
+      <li><a href="index.html#about">نبذة تعريفية</a></li>
+      <li><a href="about-me.html">عنّي</a></li>
+      <li><a href="index.html#services">الخدمات</a></li>
+      <li><a href="index.html#portfolio">معرض الأعمال</a></li>
+      <li><a href="Sample-studies.html">دراسات نموذجية</a></li>
+      <li><a href="free-consultation.html">الاستشارة المجانية</a></li>
+      <li><a href="index.html#contact">تواصل معي</a></li>
+    </ul>
+  </div>
+  <!-- /Side Menu -->
+
+  <!-- Hero Section -->
+  <section class="hero-consultation text-center">
+    <div class="container position-relative">
+      <div class="hero-badges">
+        <span class="badge-consult"><i class="fas fa-certificate"></i> خبرة أكثر من ٣٩ عاماً</span>
+        <span class="badge-consult"><i class="fas fa-chart-pie"></i> دراسات جدوى وافية</span>
+        <span class="badge-consult"><i class="fas fa-user-shield"></i> سرية تامة للمعلومات</span>
+      </div>
+      <h1 class="hero-title">
+        طلب <span class="highlight">استشارة مجانية</span> لدراسة الجدوى
+      </h1>
+      <p class="hero-subtitle">
+        يسعدنا تقديم استشارة أولية مجانية لمشروعك الاستثماري. يرجى تعبئة النموذج أدناه بالبيانات والمعايير الفنية والمالية لمساعدتنا في تقديم الرؤية والدراسة المناسبة لاحتياجاتك.
+      </p>
+    </div>
+  </section>
+
+  <!-- Form & Context Container -->
+  <div class="container py-4 mb-5">
+    <div class="row g-4">
+
+      <!-- Form Column -->
+      <div class="col-lg-8">
+        <div class="form-card">
+          <form id="consultation-form" novalidate>
+            
+            <!-- Section 1: Contact Details -->
+            <div class="form-section-title">
+              <i class="fas fa-user"></i> البيانات الشخصية ومعلومات التواصل
+            </div>
+
+            <div class="row g-3 mb-4">
+              <div class="col-md-6">
+                <label for="first_name" class="form-label">الاسم الأول <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="أدخل اسمك الأول" required>
+              </div>
+              <div class="col-md-6">
+                <label for="last_name" class="form-label">اسم العائلة <span class="required-star">*</span></label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="أدخل اسم العائلة" required>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">البريد الإلكتروني <span class="required-star">*</span></label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@domain.com" dir="ltr" required>
+              </div>
+              <div class="col-md-6">
+                <label for="phone_number" class="form-label">رقم الهاتف / الواتساب مع المفتاح الدولي <span class="required-star">*</span></label>
+                <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="+966 50 000 0000" dir="ltr" required>
+              </div>
+            </div>
+
+            <!-- Section 2: Feasibility Parameters & Dropdowns -->
+            <div class="form-section-title">
+              <i class="fas fa-sliders-h"></i> معطيات ومؤشرات دراسة الجدوى
+            </div>
+
+            <div class="row g-3 mb-4">
+              <!-- Field / Sector Dropdown -->
+              <div class="col-md-6">
+                <label for="project_sector" class="form-label">مجال المشروع / القطاع <span class="required-star">*</span></label>
+                <select class="form-select" id="project_sector" name="project_sector" required>
+                  <option value="" selected disabled>اختر القطاع أو المجال...</option>
+                  <option value="العقارات والإنشاءات والتطوير العقاري">العقارات والإنشاءات والتطوير العقاري</option>
+                  <option value="الصناعة والإنتاج التحويلي">الصناعة والإنتاج التحويلي</option>
+                  <option value="الطاقة المتجددة والطاقة الشمسية">الطاقة المتجددة والطاقة الشمسية</option>
+                  <option value="التجارة والخدمات اللوجستية">التجارة والخدمات اللوجستية</option>
+                  <option value="السياحة والفنادق والمطاعم">السياحة والفنادق والمطاعم</option>
+                  <option value="الرعاية الصحية والمستشفيات">الرعاية الصحية والمستشفيات</option>
+                  <option value="الزراعة والأغذية والصناعات الغذائية">الزراعة والأغذية والصناعات الغذائية</option>
+                  <option value="التقنية والخدمات الرقمية">التقنية والخدمات الرقمية</option>
+                  <option value="التعليم والتدريب">التعليم والتدريب</option>
+                  <option value="قطاع آخر">قطاع آخر (مذكور في التفاصيل)</option>
+                </select>
+              </div>
+
+              <!-- Capital USD Dropdown -->
+              <div class="col-md-6">
+                <label for="capital_range" class="form-label">رأس المال المتوقع (بالدولار الأمريكي USD) <span class="required-star">*</span></label>
+                <select class="form-select" id="capital_range" name="capital_range" required>
+                  <option value="" selected disabled>اختر مدى رأس المال بالدولار...</option>
+                  <option value="أقل من $50,000">أقل من $50,000 (مشروع صغير جداً)</option>
+                  <option value="$50,000 - $100,000">$50,000 - $100,000</option>
+                  <option value="$100,000 - $250,000">$100,000 - $250,000</option>
+                  <option value="$250,000 - $500,000">$250,000 - $500,000</option>
+                  <option value="$500,000 - $1,000,000">$500,000 - $1,000,000</option>
+                  <option value="$1,000,000 - $5,000,000">$1,000,000 - $5,000,000</option>
+                  <option value="أكثر من $5,000,000">أكثر من $5,000,000 (استثمار ضخم)</option>
+                </select>
+              </div>
+
+              <!-- Enterprise Size Dropdown -->
+              <div class="col-md-6">
+                <label for="enterprise_size" class="form-label">حجم المنشأة / نطاق المشروع <span class="required-star">*</span></label>
+                <select class="form-select" id="enterprise_size" name="enterprise_size" required>
+                  <option value="" selected disabled>اختر حجم المنشأة...</option>
+                  <option value="مشروع متناهي الصغر (1-5 أفراد)">مشروع متناهي الصغر (1 - 5 أفراد)</option>
+                  <option value="مشروع صغير (6-25 فرد)">مشروع صغير (6 - 25 فرد)</option>
+                  <option value="مشروع متوسط (26-100 فرد)">مشروع متوسط (26 - 100 فرد)</option>
+                  <option value="مشروع كبير / شركة كبرى (>100 فرد)">مشروع كبير / شركة كبرى (أكثر من 100 فرد)</option>
+                </select>
+              </div>
+
+              <!-- Target Location Dropdown -->
+              <div class="col-md-6">
+                <label for="project_location" class="form-label">دولة أو موقع تنفيذ المشروع <span class="required-star">*</span></label>
+                <select class="form-select" id="project_location" name="project_location" required>
+                  <option value="" selected disabled>اختر دولة المشروع...</option>
+                  <option value="المملكة العربية السعودية">المملكة العربية السعودية</option>
+                  <option value="الجمهورية التركية">الجمهورية التركية</option>
+                  <option value="الجمهورية العربية السورية">الجمهورية العربية السورية</option>
+                  <option value="دولة الإمارات العربية المتحدة">دولة الإمارات العربية المتحدة</option>
+                  <option value="دولة قطر">دولة قطر</option>
+                  <option value="دولة الكويت">دولة الكويت</option>
+                  <option value="جمهورية مصر العربية">جمهورية مصر العربية</option>
+                  <option value="دولة أخرى">دولة أخرى</option>
+                </select>
+              </div>
+
+              <!-- Current Project Stage Dropdown -->
+              <div class="col-md-6">
+                <label for="project_stage" class="form-label">مرحلة المشروع الحالية <span class="required-star">*</span></label>
+                <select class="form-select" id="project_stage" name="project_stage" required>
+                  <option value="" selected disabled>اختر مرحلة المشروع...</option>
+                  <option value="فكرة استثمارية تبحث عن تقييم وجدوى">فكرة استثمارية تبحث عن تقييم وجدوى</option>
+                  <option value="في مرحلة التخطيط وتجهيز الأرض/المقر">في مرحلة التخطيط وتجهيز الأرض/المقر</option>
+                  <option value="مشروع قائم ورغبة للتوسع وتطوير الأعمال">مشروع قائم ورغبة للتوسع وتطوير الأعمال</option>
+                  <option value="دراسة جدوى للحصول على تمويل بنكي أو حكومي">دراسة جدوى للحصول على تمويل بنكي أو حكومي</option>
+                </select>
+              </div>
+
+              <!-- Primary Purpose Dropdown -->
+              <div class="col-md-6">
+                <label for="study_purpose" class="form-label">الهدف الرئيسي من دراسة الجدوى <span class="required-star">*</span></label>
+                <select class="form-select" id="study_purpose" name="study_purpose" required>
+                  <option value="" selected disabled>اختر الغرض الأساسي...</option>
+                  <option value="اتخاذ قرار الاستثمار وتقييم المخاطر">اتخاذ قرار الاستثمار وتقييم المخاطر</option>
+                  <option value="التقديم للبنوك والصناديق التمويلية">التقديم للبنوك والصناديق التمويلية</option>
+                  <option value="جذب شركاء ومستثمرين جدد">جذب شركاء ومستثمرين جدد</option>
+                  <option value="الحصول على التراخيص والتصاريح الرسمية">الحصول على التراخيص والتصاريح الرسمية</option>
+                  <option value="إعادة هيكلة النموذج المالي والتكاليف">إعادة هيكلة النموذج المالي والتكاليف</option>
+                </select>
+              </div>
+
+              <!-- Timeline Dropdown -->
+              <div class="col-12">
+                <label for="execution_timeline" class="form-label">الجدول الزمني المتوقع للبدء في تنفيذ المشروع <span class="required-star">*</span></label>
+                <select class="form-select" id="execution_timeline" name="execution_timeline" required>
+                  <option value="" selected disabled>اختر الإطار الزمني...</option>
+                  <option value="فوري (خلال شهر)">فوري (خلال شهر)</option>
+                  <option value="خلال 1 إلى 3 أشهر">خلال 1 إلى 3 أشهر</option>
+                  <option value="خلال 3 إلى 6 أشهر">خلال 3 إلى 6 أشهر</option>
+                  <option value="خلال سنة">خلال سنة</option>
+                  <option value="غير محدد بعد">غير محدد بعد</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Section 3: Detailed Notes -->
+            <div class="form-section-title">
+              <i class="fas fa-file-alt"></i> تفاصيل وملاحظات المشروع
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="form-label">شرح مختصر عن فكرة المشروع والمنتجات/الخدمات الرئيسية <span class="required-star">*</span></label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="يرجى كتابة نبذة عن طبيعة المشروع، الموقع المستهدف بالتفصيل، والمنتجات أو الخدمات التي ستقدمها..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit-consultation">
+              <i class="fas fa-paper-plane me-2"></i> إرسال طلب الاستشارة المجانية
+            </button>
+
+            <div id="form-status" class="form-status-alert alert" role="alert"></div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Info & Benefits Sidebar Column -->
+      <div class="col-lg-4">
+        <div class="sticky-top" style="top: 2rem; z-index: 5;">
+          
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-chess-knight"></i></div>
+            <div class="benefit-title">رؤية استراتيجية دقيقة</div>
+            <p class="benefit-desc">نحلل فكرة مشروعك بناءً على المعطيات الميدانية والظروف الاقتصادية المحدثة في المنطقة.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-calculator"></i></div>
+            <div class="benefit-title">تقديرات مالية واقعية</div>
+            <p class="benefit-desc">نساعدك في تقدير حجم رأس المال، التكاليف التشغيلية، ومؤشرات الربحية وفترة الاسترداد المتوقعة.</p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon"><i class="fas fa-user-lock"></i></div>
+            <div class="benefit-title">سرية تامة وأمان</div>
+            <p class="benefit-desc">جميع بيانات مشروعك وأفكارك تتعامل معها بمنتهى السرية والمهنية العالية.</p>
+          </div>
+
+          <div class="benefit-card text-center" style="background: linear-gradient(135deg, #106967 0%, #163235 100%); color: #fff;">
+            <i class="fas fa-award fa-2x text-warning mb-2"></i>
+            <h5 class="fw-bold mb-2">المستشار المهندس عبد الكريم السيد</h5>
+            <p class="small text-light mb-3">خبرة تزيد عن ٣٩ عاماً في دراسات الجدوى، الهندسة المدنية، وإدارة المشاريع الكبرى في السعودية وتركيا وسوريا.</p>
+            <a href="about-me.html" class="btn btn-sm btn-outline-light rounded-pill px-3">تعرف على السيرة الذاتية</a>
+          </div>
+
+          <div class="text-center mt-3">
+            <a href="index.html" class="back-home-btn">
+              <i class="fas fa-arrow-right"></i> العودة إلى الصفحة الرئيسية
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container text-center">
+      <div class="top-scroll mb-3">
+        <a href="#top"><i class="fas fa-arrow-circle-up fa-2x"></i></a>
+      </div>
+      <hr>
+      <p><a href="index.html#contact" style="color: inherit; text-decoration: none;">تواصل معنا</a></p>
+      <p>جميع الحقوق محفوظة &copy; 2026 - منصة المستشار المهندس عبد الكريم السيد</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/jquery-1.10.2.js"></script>
+  <script>
+    const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzU2I_Zrn1q2nRZk8UcecjMrl3Yq1z-s34aNYBUMOekz25kePIq4t4FUfyq11OcmBzebA/exec';
+    const GOOGLE_SHEET_NAME = 'Abdulkarim_Consultations';
+
+    // Sidebar menu toggle script
+    (function () {
+      var toggleBtn = document.getElementById('menu-toggle');
+      var closeBtn = document.getElementById('menu-close');
+      var sidebar = document.getElementById('sidebar-wrapper');
+
+      if (toggleBtn && closeBtn && sidebar) {
+        toggleBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          sidebar.classList.toggle('active');
+        });
+        closeBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          sidebar.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#sidebar-wrapper a[href]').forEach(function (link) {
+          if (link.id !== 'menu-close') {
+            link.addEventListener('click', function () {
+              sidebar.classList.remove('active');
+            });
+          }
+        });
+      }
+    })();
+
+    // Form Submission & Validation Logic
+    const consultationForm = document.getElementById('consultation-form');
+    const formStatus = document.getElementById('form-status');
+
+    function showStatus(message, isError) {
+      formStatus.style.display = 'block';
+      formStatus.textContent = message;
+      if (isError) {
+        formStatus.className = 'form-status-alert alert alert-danger';
+      } else {
+        formStatus.className = 'form-status-alert alert alert-success';
+      }
+    }
+
+    consultationForm.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const firstName = document.getElementById('first_name').value.trim();
+      const lastName = document.getElementById('last_name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phoneNumber = document.getElementById('phone_number').value.trim();
+      const projectSector = document.getElementById('project_sector').value;
+      const capitalRange = document.getElementById('capital_range').value;
+      const enterpriseSize = document.getElementById('enterprise_size').value;
+      const projectLocation = document.getElementById('project_location').value;
+      const projectStage = document.getElementById('project_stage').value;
+      const studyPurpose = document.getElementById('study_purpose').value;
+      const executionTimeline = document.getElementById('execution_timeline').value;
+      const message = document.getElementById('message').value.trim();
+
+      // Basic Name Validation
+      if (firstName.length < 2 || firstName.length > 30 || !/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(firstName)) {
+        showStatus('يرجى إدخال اسم أول صحيح (بين 2 و30 حرفاً).', true);
+        return;
+      }
+      if (lastName.length < 2 || lastName.length > 30 || !/^[\u0600-\u06FFa-zA-Z\s'-]+$/.test(lastName)) {
+        showStatus('يرجى إدخال اسم عائلة صحيح (بين 2 و30 حرفاً).', true);
+        return;
+      }
+
+      // Email Validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showStatus('يرجى إدخال بريد إلكتروني صحيح.', true);
+        return;
+      }
+
+      // Phone Validation
+      const phonePattern = /^\+?[0-9\s-]{7,20}$/;
+      if (!phonePattern.test(phoneNumber)) {
+        showStatus('يرجى إدخال رقم هاتف/واتساب صحيح (7 إلى 20 رقماً مع المفتاح الدولي).', true);
+        return;
+      }
+
+      // Dropdowns Validation
+      if (!projectSector) {
+        showStatus('يرجى اختيار مجال المشروع / القطاع.', true);
+        return;
+      }
+      if (!capitalRange) {
+        showStatus('يرجى اختيار مدى رأس المال المتوقع بالدولار.', true);
+        return;
+      }
+      if (!enterpriseSize) {
+        showStatus('يرجى اختيار حجم المنشأة.', true);
+        return;
+      }
+      if (!projectLocation) {
+        showStatus('يرجى اختيار دولة أو موقع تنفيذ المشروع.', true);
+        return;
+      }
+      if (!projectStage) {
+        showStatus('يرجى اختيار مرحلة المشروع الحالية.', true);
+        return;
+      }
+      if (!studyPurpose) {
+        showStatus('يرجى اختيار الهدف الرئيسي من دراسة الجدوى.', true);
+        return;
+      }
+      if (!executionTimeline) {
+        showStatus('يرجى اختيار الجدول الزمني للبدء.', true);
+        return;
+      }
+
+      // Notes Validation
+      if (message.length < 10) {
+        showStatus('يرجى كتابة تفاصيل إضافية عن المشروع (على الأقل 10 أحرف).', true);
+        return;
+      }
+
+      const fullMessageDetails = `[طلب استشارة دراسة جدوى]\nالقطاع: ${projectSector}\nرأس المال المتوقع: ${capitalRange}\nحجم المنشأة: ${enterpriseSize}\nالموقع/الدولة: ${projectLocation}\nمرحلة المشروع: ${projectStage}\nالهدف من الدراسة: ${studyPurpose}\nالجدول الزمني: ${executionTimeline}\n\nتفاصيل إضافية:\n${message}`;
+
+      const payload = {
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone_number: phoneNumber,
+        project_sector: projectSector,
+        capital_range: capitalRange,
+        enterprise_size: enterpriseSize,
+        project_location: projectLocation,
+        project_stage: projectStage,
+        study_purpose: studyPurpose,
+        execution_timeline: executionTimeline,
+        message: fullMessageDetails,
+        sheet_name: GOOGLE_SHEET_NAME
+      };
+
+      showStatus('جاري إرسال طلب الاستشارة المجانية...', false);
+
+      try {
+        await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: new URLSearchParams(payload).toString()
+        });
+
+        showStatus('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
+        consultationForm.reset();
+      } catch (error) {
+        showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل مباشرة عبر الواتساب.', true);
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
