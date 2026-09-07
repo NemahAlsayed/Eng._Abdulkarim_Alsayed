@@ -514,7 +514,8 @@
   <!-- Scripts -->
   <script src="js/jquery-1.10.2.js"></script>
   <script>
-    const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyUTTxyB_4ELpEruXEa2WNgUZnasmmZIS_IwM0S1OwCvOBJkHq4ds__uekk34d72KppOg/exec';
+    // IMPORTANT: Replace this with YOUR deployed web app URL
+    const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/YOUR_DEPLOYED_URL/exec';
     const GOOGLE_SHEET_NAME = 'Abdulkarim_Consultations';
 
     // Sidebar menu toggle script
@@ -654,46 +655,49 @@
       showStatus('جاري إرسال طلب الاستشارة المجانية...', false);
 
       try {
-        const formData = new FormData();
+        // Use URLSearchParams instead of FormData for better compatibility
+        const formData = new URLSearchParams();
         Object.keys(payload).forEach(function(key) {
           formData.append(key, payload[key]);
         });
 
-        console.log('Sending to:', GOOGLE_SHEET_WEB_APP_URL);
+        console.log('📤 Sending to:', GOOGLE_SHEET_WEB_APP_URL);
+        console.log('📦 Payload:', payload);
 
         const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
           method: 'POST',
           headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
             'Accept': 'application/json'
           },
-          body: formData
+          body: formData.toString()
         });
 
-        console.log('Response status:', response.status);
+        console.log('📥 Response status:', response.status);
         const resultText = await response.text();
-        console.log('Response text:', resultText);
+        console.log('📄 Response text:', resultText);
 
         try {
           const data = JSON.parse(resultText);
           if (data.status === 'success') {
-            showStatus('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
+            showStatus('✅ تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
             consultationForm.reset();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
-            showStatus('حدث خطأ: ' + data.message, true);
+            showStatus('❌ حدث خطأ: ' + data.message, true);
           }
         } catch (parseError) {
           console.error('Parse error:', parseError);
           if (response.ok) {
-            showStatus('تم الإرسال بنجاح! سنتواصل معك قريباً.', false);
+            showStatus('✅ تم الإرسال بنجاح! سنتواصل معك قريباً.', false);
             consultationForm.reset();
           } else {
-            showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
+            showStatus('❌ حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
           }
         }
       } catch (error) {
-        console.error('Fetch error:', error);
-        showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
+        console.error('❌ Fetch error:', error);
+        showStatus('❌ حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
       }
     });
   </script>
