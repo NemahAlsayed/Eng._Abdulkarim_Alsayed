@@ -654,18 +654,38 @@
       showStatus('جاري إرسال طلب الاستشارة المجانية...', false);
 
       try {
-        await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+        const params = new URLSearchParams(payload).toString();
+        console.log('Sending payload:', params);
+
+        const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
           method: 'POST',
-          mode: 'no-cors',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
           },
-          body: new URLSearchParams(payload).toString()
+          body: params
         });
 
-        showStatus('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
-        consultationForm.reset();
+        const result = await response.text();
+        console.log('Raw response:', result);
+
+        try {
+          const data = JSON.parse(result);
+          if (data.status === 'success') {
+            showStatus('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
+            consultationForm.reset();
+          } else {
+            showStatus('حدث خطأ: ' + data.message, true);
+          }
+        } catch (parseError) {
+          if (response.ok) {
+            showStatus('تم الإرسال بنجاح! سنتواصل معك قريباً.', false);
+            consultationForm.reset();
+          } else {
+            showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
+          }
+        }
       } catch (error) {
+        console.error('Fetch error:', error);
         showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل مباشرة عبر الواتساب.', true);
       }
     });

@@ -487,14 +487,34 @@
         contactStatus.style.color = '#1f7a45';
 
         try {
-          await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+          const params = new URLSearchParams(payload).toString();
+          console.log('Sending payload:', params);
+
+          const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
               'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
-            body: new URLSearchParams(payload).toString()
+            body: params
           });
+
+          const result = await response.text();
+          console.log('Raw response:', result);
+
+          try {
+            const data = JSON.parse(result);
+            if (data.status !== 'success') {
+              contactStatus.textContent = 'حدث خطأ: ' + data.message;
+              contactStatus.style.color = '#b91c1c';
+              return;
+            }
+          } catch (parseError) {
+            if (!response.ok) {
+              contactStatus.textContent = 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
+              contactStatus.style.color = '#b91c1c';
+              return;
+            }
+          }
 
           contactStatus.textContent = 'تم إرسال الرسالة بنجاح.';
           contactStatus.style.color = '#1f7a45';
@@ -504,6 +524,7 @@
             closeContactModal();
           }, 1200);
         } catch (error) {
+          console.error('Fetch error:', error);
           contactStatus.textContent = 'حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.';
           contactStatus.style.color = '#b91c1c';
         }
