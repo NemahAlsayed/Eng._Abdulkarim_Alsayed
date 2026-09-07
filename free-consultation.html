@@ -654,29 +654,36 @@
       showStatus('جاري إرسال طلب الاستشارة المجانية...', false);
 
       try {
-        const params = new URLSearchParams(payload).toString();
-        console.log('Sending payload:', params);
+        const formData = new FormData();
+        Object.keys(payload).forEach(function(key) {
+          formData.append(key, payload[key]);
+        });
+
+        console.log('Sending to:', GOOGLE_SHEET_WEB_APP_URL);
 
         const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            'Accept': 'application/json'
           },
-          body: params
+          body: formData
         });
 
-        const result = await response.text();
-        console.log('Raw response:', result);
+        console.log('Response status:', response.status);
+        const resultText = await response.text();
+        console.log('Response text:', resultText);
 
         try {
-          const data = JSON.parse(result);
+          const data = JSON.parse(resultText);
           if (data.status === 'success') {
             showStatus('تم إرسال طلب الاستشارة بنجاح! سنتواصل معك في أقرب وقت ممكن.', false);
             consultationForm.reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           } else {
             showStatus('حدث خطأ: ' + data.message, true);
           }
         } catch (parseError) {
+          console.error('Parse error:', parseError);
           if (response.ok) {
             showStatus('تم الإرسال بنجاح! سنتواصل معك قريباً.', false);
             consultationForm.reset();
@@ -686,7 +693,7 @@
         }
       } catch (error) {
         console.error('Fetch error:', error);
-        showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو التواصل مباشرة عبر الواتساب.', true);
+        showStatus('حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى.', true);
       }
     });
   </script>
